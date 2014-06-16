@@ -1,0 +1,10 @@
+<h1>Question#index</h1>
+<p>Find me in app/views/question/index.html.erb</p>
+
+<h1> Hi <%= session[:cas_extra_attributes]["cn"][0] %> ! </h1>
+
+<h3> Your email is : <%= session[:cas_extra_attributes]["mail"][0] %> </h3>
+<h3> Your id is : <%= session[:cas_user] %> </h3>
+
+
+<button class='btn btn-primary'  onclick="window.location.href='/logout'">Logout</button>
