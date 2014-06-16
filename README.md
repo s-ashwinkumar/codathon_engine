@@ -1,4 +1,3 @@
-codathon_engine
-===============
+#Codathon Engine
 
-GCM like model engine built on Rails
+*Development in Progress. Keep checking for updates. ETA - unknown*
