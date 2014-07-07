@@ -5,7 +5,8 @@ gem 'rails', '3.2.16'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'mysql2'
 
 #For CAS Authentication
 gem 'rubycas-client'
@@ -42,4 +43,4 @@ gem 'less-rails-bootstrap'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+#gem 'debugger'

@@ -21759,3 +21759,31 @@ Guessed service url: "http://localhost:4000/login"
 Generated login url: http://cas.lister.net/login?service=http%3A%2F%2Flocalhost%3A4000%2Flogin
   Rendered login/index.html.erb within layouts/application (0.7ms)
 Completed 200 OK in 11.5ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Mysql2::Error: Table 'codathon_development.challenges' doesn't exist: SHOW FULL FIELDS FROM `challenges`
+Connecting to database specified by database.yml
+  [1m[36m (156.7ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (225.7ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (3.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20140707050003)
+  [1m[35m (166.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_name` varchar(255), `full_name` varchar(255), `email` varchar(255), `role` varchar(255), `emp_id` varchar(255), `active` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (57.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140707050003')[0m
+Migrating to CreateChallenges (20140707050315)
+  [1m[35m (198.7ms)[0m  CREATE TABLE `challenges` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `start_date` datetime, `end_date` datetime, `active` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (57.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140707050315')[0m
+Migrating to CreateQuestions (20140707050449)
+  [1m[35m (173.6ms)[0m  CREATE TABLE `questions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `points` int(11), `challenge_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (49.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140707050449')[0m
+Migrating to CreateSubmissions (20140707050557)
+  [1m[35m (157.8ms)[0m  CREATE TABLE `submissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `result` tinyint(1), `score` int(11), `user_id` int(11), `question_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (49.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20140707050557')[0m
+  [1m[35m (0.4ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
