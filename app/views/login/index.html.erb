@@ -1,8 +1,17 @@
-<h1>Login#index</h1>
-<p>Find me in app/views/login/index.html.erb</p>
-
+<div style="text-align:center">
+	<h1 style="margin-bottom: 0px">Lister Code-A-Thon</h1>
+	<h4 style="margin-top: 0px">For the forgotten coder in you!</h4>
+</div>
 <h1> <%= session[:cas_user] %> </h1>
 
-<%= link_to("Login", CASClient::Frameworks::Rails::Filter.login_url(controller)) %>
+<% #=link_to("Login", CASClient::Frameworks::Rails::Filter.login_url(controller)) %>
 
-<%= link_to("Logout", '/logout') %>
+<div class="jumbotron">
+
+list of all programming languages/some effect
+
+</div>
+
+<div style="margin: 0 auto; display:table">
+<button class='btn btn-primary btn-lg' onclick="window.location.href='/question/index'">Login</button>
+</div>
