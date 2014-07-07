@@ -43,4 +43,4 @@ gem 'less-rails-bootstrap'
 # gem 'capistrano'
 
 # To use debugger
-#gem 'debugger'
+gem 'debugger'
