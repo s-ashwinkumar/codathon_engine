@@ -1,6 +1,6 @@
 Codathon::Application.routes.draw do
   
-  get 'login', to: 'login#index'
+  get 'login', to: 'application#login'
   get "question/index"
 
   match '/logout', to: 'application#logout'
@@ -54,7 +54,7 @@ Codathon::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'login#index'
+  root :to => 'application#index'
 
   # See how all your routes lay out with "rake routes"
 

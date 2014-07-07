@@ -1,7 +1,7 @@
 class QuestionController < ApplicationController
   
   #CAS Authentication Docs : https://github.com/rubycas/rubycas-client#using-rubycas-client-in-rails-controllers
-  before_filter CASClient::Frameworks::Rails::Filter
+  
   # before_filter :check_loggedin
 
   # def check_loggedin
@@ -11,6 +11,7 @@ class QuestionController < ApplicationController
   # end
 
   def index
+    Rails.logger.info "***************** #{session.inspect}"
   end
 
 end

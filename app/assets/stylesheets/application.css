@@ -12,3 +12,6 @@
  *= require_tree .
  *= require custom_bootstrap/custom_bootstrap
  */
+body {
+    padding-top: 100px;
+}
