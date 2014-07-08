@@ -1,0 +1,26 @@
+<div class="jumbotron">
+	<div>
+	<%= select_month(@date,{},{:class => "date-select"}) %>
+	<%= select_year(@date,{},{:class => "date-select"}) %>
+	</div>
+		<table id="rounded-corner" class="table responstable">
+		    <thead>
+            	<tr>
+                	<th>S.No</th>
+                	<th>Name</th>
+                	<th>Score</th>
+                	<th>Submissions</th>
+            	</tr>
+        	</thead>
+        	<tbody>
+	           	<% @data.each_with_index do | obj,index | %>
+    	       		<tr>
+	                	<td><%= index+1 %></td>
+                		<td><%= obj[:name] %></td>
+                		<td><%= obj[:score] %></td>
+                		<td><%= obj[:submissions] %></td>
+            		</tr>
+            	<% end %>	
+        	</tbody>
+		</table>
+</div>
