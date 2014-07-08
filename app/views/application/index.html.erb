@@ -1,17 +1,17 @@
-<div style="text-align:center">
-	<h1 style="margin-bottom: 0px">Lister Code-A-Thon</h1>
-	<h4 style="margin-top: 0px">For the forgotten coder in you!</h4>
-</div>
-<h1> <%= session[:cas_user] %> </h1>
-
-<% #=link_to("Login", CASClient::Frameworks::Rails::Filter.login_url(controller)) %>
-
-<div class="jumbotron">
-
-list of all programming languages/some effect
-
+<!-- Title Heading -->
+<div class="titleHeading">
+	<h1 class="homeHeading">Lister Code-A-Thon</h1>
+	<h3 class="homeSubheading">For the forgotten coder in you!</h3>
 </div>
 
-<div style="margin: 0 auto; display:table">
-<button class='btn btn-primary btn-lg' onclick="window.location.href='/login'">Login</button>
+<!-- Text editors' screenshots window -->
+<div class="image-container">
+	<img src="assets/ubuntu.png" class="codeImage centreImage">
+	<img src="assets/sublime.png" class="codeImage leftImage">
+	<img src="assets/terminal.png" class="codeImage rightImage">
+</div>
+
+<!-- Login Button -->
+<div class="loginButton">
+	<button class='btn btn-primary btn-lg' onclick="window.location.href='/login'">Login</button>
 </div>

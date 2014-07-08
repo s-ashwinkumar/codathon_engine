@@ -13,7 +13,15 @@
  *= require custom_bootstrap/custom_bootstrap
  */
 body {
-    padding-top: 100px;
+    padding-top: 10px;
+}
+
+body#homePageDesign{
+	background: url(/assets/hackathon.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .drop-extra{
@@ -21,10 +29,11 @@ body {
 	color: #5F5E66;
 }
 
+/* Footer CSS */
+
 .footer{
-	color: #777777;
-	padding-bottom: 5px;
-    padding-top: 5px;
+	color: #3F3F3F;
+	padding: 2% 0 2% 0;
     text-align: center;
 }
 
@@ -34,8 +43,96 @@ body {
 }
 
 .footer-links{
+	margin-top: 20px;
 	font-size: 16px;
 }
 .footer-links > li{
 	display: inline;
+}
+
+
+.container{
+	height: 100%;
+	width: 100%;
+}
+
+.image-container{
+	position: relative; 
+	overflow: hidden;
+	margin-top: 3%;
+	display: block;
+	width: 100% !important;
+}
+
+.btn-lg{
+	height: 60px;
+	width: 120px;
+}
+
+/* Heading in login home page */
+
+.titleHeading{
+	-webkit-transition: color 500ms ease-out 0.5s;
+	-moz-transition: color 500ms ease-out 0.5s;
+	-o-transition: color 500ms ease-out 0.5s;
+	transition: color 500ms ease-out 0.5s;
+	text-align: center;
+	color: white;
+}
+
+.titleHeading:hover{
+	color: #b95d40
+}
+
+.homeHeading{
+	margin-bottom: 0px; 
+	font-size: 40pt;
+}
+.homeSubheading{
+	margin-top: 0px;
+}
+
+/* Screenshot Box Shadow Image Effect */
+
+.codeImage{
+	-webkit-transition: box-shadow 500ms ease-out 0.5s;
+    -moz-transition: box-shadow 500ms ease-out 0.5s;
+    -o-transition: box-shadow 500ms ease-out 0.5s;
+    transition: box-shadow 500ms ease-out 0.5s;
+}
+
+.codeImage:hover{
+	box-shadow: 0 0 80px #b95d40;
+}
+
+/* Screenshot Image CSS */
+
+.centreImage{
+	position:absolute; 
+	z-index:4; 
+	left: 25%;
+	height:100%;
+	width: 47%;
+}
+
+.leftImage{
+	position:relative; 
+	float:left; 
+	margin-top: 5%;  
+	z-index:1;
+	height: 40%;
+	width: 55%;
+}
+
+.rightImage{
+	z-index:1; 
+	right: 10%; 
+	margin-top: 5%;
+	height:1%; 
+	width:45%;
+}
+
+.loginButton{
+	margin: 3% auto; 
+	display:table
 }
