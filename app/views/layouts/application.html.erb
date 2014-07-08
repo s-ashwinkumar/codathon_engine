@@ -23,7 +23,6 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><%= link_to "Dashboard",root_path %></li>
-            <% debugger %>
             <% if session[:user].is_admin? %>
 	            <li><%= link_to "Challenge", root_path %></li>
             <% else %>
@@ -50,7 +49,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meterpodu</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application", "sass-bootstrap" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
