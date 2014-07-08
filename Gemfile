@@ -29,6 +29,7 @@ gem 'jquery-rails'
 
 # Twitter BootStrap gem - Documentation/Dev - https://github.com/metaskills/less-rails-bootstrap
 gem 'less-rails-bootstrap'
+gem 'will_paginate-bootstrap'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

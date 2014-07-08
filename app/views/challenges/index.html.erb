@@ -1,0 +1,27 @@
+<div class="table-responsive">
+	<table class="table table-hover" id="challenges_list">
+		<tr>
+			<th>#</th>
+			<th>Title</th>
+			<th /> <!-- For the schedule button -->
+			<th /> <!-- For the Finish Button -->
+		</tr>
+		<% @challenges.each do |ch| %>
+		<tr>
+			<td id=<%= "id_#{ch.id}" %>><%= ch.id %></td>
+			<td id=<%= "title_#{ch.id}" %>><a href = <%= "/check?challenge_id=#{ch.id}" %> data-toggle="modal" data-target="#myModal"><%= ch.title %></a></td>
+			<td><button type="button" class="btn btn-success btn-sm btn-circle" <%= disable?("#{ch.id}") %> id=<%= "schedule_#{ch.id}" %>>Schedule</button></td>
+			<td><button type="button" class="btn btn-danger btn-sm btn-circle" <%= disable?("#{ch.id}") %> id=<%= "finish_#{ch.id}" %>>Finish</button>
+		</tr>
+		<% end %>
+	</table>
+
+	<%= will_paginate @challenges, renderer: BootstrapPagination::Rails %>
+	
+	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+  		<div class="modal-dialog modal-lg">	
+  			<div class="modal-content">
+  			</div>
+  		</div>
+	</div>
+</div>	

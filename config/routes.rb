@@ -5,6 +5,10 @@ Codathon::Application.routes.draw do
   match '/logout', to: 'application#logout'
   match '/dashboards', to: 'dashboards#index', :as => "dashboards"
   match '/challenges', to: 'challenges#index', :as => "challenges"
+  match '/practices', to: 'practices#index', :as => "practices"
+  match '/challenge/finish', to: 'challenges#finish', :as => "challenge_finish"
+  match '/check', to: 'challenges#load_modal', :as => "load_modal"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
