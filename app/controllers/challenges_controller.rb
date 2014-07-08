@@ -21,4 +21,8 @@ class ChallengesController < ApplicationController
     		format.js { render :partial => "questions_list_in_modal", :locals => { challenge: ch } }
   		end
 	end
+
+	def save_challenge
+		debugger
+	end
 end

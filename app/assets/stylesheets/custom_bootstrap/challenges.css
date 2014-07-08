@@ -13,7 +13,10 @@ background: none !important;
 
 .modal-body{
 	padding-right: 100px !important;
-	padding-top: 20px !important;
-	padding-bottom: 20px !important;
 	padding-left: 100px !important;
+}
+
+
+.col-sm-10{
+	padding-bottom: 10px
 }
