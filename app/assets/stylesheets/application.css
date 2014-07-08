@@ -23,8 +23,8 @@ body {
 
 .footer{
 	color: #777777;
-	padding-bottom: 40px;
-    padding-top: 40px;
+	padding-bottom: 5px;
+    padding-top: 5px;
     text-align: center;
 }
 
@@ -34,7 +34,6 @@ body {
 }
 
 .footer-links{
-	margin-top: 20px;
 	font-size: 16px;
 }
 .footer-links > li{
