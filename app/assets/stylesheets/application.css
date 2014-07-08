@@ -20,3 +20,23 @@ body {
 	font-size: 20px;
 	color: #5F5E66;
 }
+
+.footer{
+	color: #777777;
+	padding-bottom: 40px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.footer-social {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.footer-links{
+	margin-top: 20px;
+	font-size: 16px;
+}
+.footer-links > li{
+	display: inline;
+}
