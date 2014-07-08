@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  set_inheritance_column 'role'
   attr_accessible :active, :email, :emp_id, :full_name, :role, :user_name
 
   has_many :submissions
