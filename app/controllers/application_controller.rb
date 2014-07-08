@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def login
   	if session[:cas_user]
 		session[:user] = User.check_for_user(session)
-		redirect_to '/question/index' #redirect to home page after navbar is done
+		redirect_to '/dashboards' #redirect to home page after navbar is done
 	end
   end	
   
