@@ -33,6 +33,7 @@
             <% end %>
           </ul>
           <ul class="nav nav-side-bar">
+            <li><span id="profile-name"> Hi <%= username(session) %></span></li>
             <li class="dropdown pull-right drop-extra">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle"> <span class = "glyphicon glyphicon-cog"></span> </a>
               <ul class="dropdown-menu">
@@ -52,15 +53,7 @@
     <div class="container">
       <%= yield %>
     </div>
-  </body>
-
-<!-- This if for When user has not logged in => Login Page -->
-<% else %>
-  <body id="homePageDesign">
-    <div class="container">
-      <%= yield %>
-    </div>
-
+    <!-- Footer -->
     <div class="footer navbar navbar-fixed-bottom">     
       <div class="container">
         <div class="footer-social">
@@ -81,6 +74,14 @@
             <li><a href="#">Blog</a></li>
         </ul>
       </div>
+    </div>
+  </body>
+
+<!-- This if for When user has not logged in => Login Page -->
+<% else %>
+  <body id="homePageDesign">
+    <div class="container">
+      <%= yield %>
     </div>
   </body>
 

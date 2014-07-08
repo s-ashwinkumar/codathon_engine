@@ -25,9 +25,18 @@ body#homePageDesign{
 	background-size: cover;
 }
 
+/*layout */
+
+.nav-side-bar{
+}
 .drop-extra{
 	font-size: 20px;
 	color: #5F5E66;
+}
+
+#profile-name{
+	float: left;
+	margin: 15px 0 0 610px
 }
 
 /* Footer CSS */
