@@ -13,10 +13,11 @@
  *= require custom_bootstrap/custom_bootstrap
  */
 body {
-    padding-top: 10px;
+    padding-top: 90px;
 }
 
 body#homePageDesign{
+	padding-top: 10px;
 	background: url(/assets/hackathon.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
