@@ -1,9 +1,9 @@
 <div class="jumbotron">
 	<div>
-	<%= select_month(@date,{},{:class => "date-select"}) %>
-	<%= select_year(@date,{},{:class => "date-select"}) %>
+	<%= select_month(@date,{},{:class => "customSelect"}) %>
+	<%= select_year(@date,{},{:class => "customSelect"}) %>
 	</div>
-		<table id="rounded-corner" class="table responstable">
+    	<table id="rounded-corner" class="table responstable">
 		    <thead>
             	<tr>
                 	<th>S.No</th>
@@ -12,15 +12,10 @@
                 	<th>Submissions</th>
             	</tr>
         	</thead>
-        	<tbody>
-	           	<% @data.each_with_index do | obj,index | %>
-    	       		<tr>
-	                	<td><%= index+1 %></td>
-                		<td><%= obj[:name] %></td>
-                		<td><%= obj[:score] %></td>
-                		<td><%= obj[:submissions] %></td>
-            		</tr>
-            	<% end %>	
+        	<tbody id="table_data">
+	           	<%= render partial: "dashboard_data", locals: { data: @data } %>
         	</tbody>
 		</table>
+        <div class="alert alert-danger" role="alert" id="empty_data" hidden="hidden"><strong>Warning!</strong> No Data Found ! Please use a different filter</div>
+
 </div>

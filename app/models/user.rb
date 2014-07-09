@@ -16,9 +16,11 @@ class User < ActiveRecord::Base
   	Participant.all.each do | user |
   		h = { :name => user.full_name}
   	    submissions = user.submissions.where("created_at > ? and created_at < ? and score != 0 ",from_date,to_date)
-  		h[:score] = submissions.group(:question_id).collect(&:score).inject(&:+)
-  		h[:submissions] = submissions.count
-  		result_array << h
+      unless submissions.empty?
+        h[:score] = submissions.group(:question_id).collect(&:score).inject(&:+)
+  		  h[:submissions] = submissions.count
+  		  result_array << h
+      end  
   	end	
   	result_array
   end	

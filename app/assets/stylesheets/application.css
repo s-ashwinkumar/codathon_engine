@@ -146,3 +146,12 @@ body#homePageDesign{
 	margin: 3% auto; 
 	display:table
 }
+
+.customSelect{
+     color: #555555;
+    font-size: 19px;
+    margin-bottom: 14px;
+    margin-right: 30px;
+    padding: 0 10px;
+    width: 135px;
+}

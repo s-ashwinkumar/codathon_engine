@@ -18,4 +18,24 @@ jQuery(document).ready(function () {
  	$('#myModal').on('hidden.bs.modal', function() {
     	$(this).removeData('bs.modal');
 	});
+	
+});
+$(document).on("change",".customSelect",function() {
+    $.ajax({
+		type: "POST",
+		url: "/dashboards",
+		data: { month: jQuery("#date_month").val(),
+				year: jQuery("#date_year").val()
+			  },
+		success: function(data){
+                    if (data.length > 1){
+                    	jQuery("#empty_data").hide();
+                    	jQuery(".table").fadeIn();
+                    	jQuery("#table_data").html(data);
+                    }else{
+                    	jQuery(".table").hide();
+                    	jQuery("#empty_data").fadeIn();
+                    }
+		}
+	});
 });
