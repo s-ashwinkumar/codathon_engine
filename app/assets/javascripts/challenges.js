@@ -4,8 +4,21 @@ jQuery(document).ready(function () {
 			finish_challenge(/(\d+)$/.exec(element.id)[0]);
 		}
 	});	
+    $(".popover-trigger").click(function() {
+    el = $(this);
+    $.get(el.data('ajaxload'), function(response) {
+      el.unbind('click').popover({
+        content: response,
+        title: 'Schedule Challenge',
+        html: true,
+        delay: {show: 100, hide: 100}
+        }).popover('show');
+      });
+    });
 });
-
+jQuery(document).on("click","#schedule_challenge_button",function(){
+    scheduleChallenge();
+});
 function finish_challenge(challenge_id) {
 	jQuery.ajax({
         type : 'POST',
@@ -58,8 +71,26 @@ function validateAndSaveChallenge() {
 			}
     	}
 	}
-	jQuery('[id^=edit_challenge_]')[0].submit();
+	jQuery('[id^=edit_challenge_]')[0].submit();	
 }
 
-
-
+function scheduleChallenge() {
+    var challenge_id=jQuery("#challenge_id").val();
+    var start_time = jQuery("#start_time").val();
+    var end_time = jQuery("#end_time").val();
+    jQuery.ajax({
+        type : 'POST',
+        data:{
+            challenge_id: challenge_id,
+            start_time: start_time,
+            end_time: end_time,
+            },
+        url: "/challenge/schedule",
+        success: function(data) {
+            alert("Challenge scheduled successfully");
+            },
+        error: function(error){
+            alert("Something went wrong, please try again later.");
+            }
+        });
+}

@@ -34,4 +34,25 @@ class ChallengesController < ApplicationController
 		end	
 		redirect_to '/challenges'
 	end
+
+	def load_datepicker
+		challenge = Challenge.find(params[:challenge_id])
+		start_date=challenge.start_date.strftime('%m/%d/%Y%l:%M %p').to_s
+		end_date=challenge.end_date.strftime('%m/%d/%Y%l:%M %p').to_s
+		render :partial => "load_datepicker", :locals => { challenge: challenge, start_date: start_date, end_date: end_date }
+	end
+
+	def schedule
+		start_time = DateTime.strptime(params[:start_time], '%m/%d/%Y %l:%M %p')
+		end_time = DateTime.strptime(params[:end_time], '%m/%d/%Y %l:%M %p')
+		challenge = Challenge.find(params[:challenge_id])
+		if challenge && start_time.present? && end_time.present?
+			challenge.update_attribute(:start_date, start_time)
+			challenge.update_attribute(:end_date, end_time)
+			render :text => "Challenge scheduled successfully", :status => 200 and return
+		else
+			render :text => "Something went wrong !!!", :status => 500 and return
+		end
+	end
+
 end

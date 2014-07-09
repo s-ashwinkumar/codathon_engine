@@ -7,8 +7,10 @@ Codathon::Application.routes.draw do
   match '/challenges', to: 'challenges#index', :as => "challenges"
   match '/practices', to: 'practices#index', :as => "practices"
   match '/challenge/finish', to: 'challenges#finish', :as => "challenge_finish"
+  match '/challenge/schedule', to: 'challenges#schedule', :as => "challenge_schedule"
   match '/load_modal', to: 'challenges#load_modal', :as => "load_modal"
   match '/save_challenge', to: 'challenges#save_challenge', :as => "save_challenge"
+  match '/load_datepicker', to: 'challenges#load_datepicker', :as => "challenges_load_datepicker"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

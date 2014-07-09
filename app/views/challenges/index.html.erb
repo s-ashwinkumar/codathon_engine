@@ -1,16 +1,18 @@
 <div class="table-responsive">
 	<table class="table table-hover" id="challenges_list">
 		<tr>
-			<th>#</th>
+			<th width="3%">#</th>
+			<th width="7%">Submissions</th>
 			<th>Title</th>
-			<th /> <!-- For the schedule button -->
-			<th /> <!-- For the Finish Button -->
+			<th width="7%" /> <!-- For the schedule button -->
+			<th width="7%"/> <!-- For the Finish Button -->
 		</tr>
 		<% @challenges.each do |ch| %>
 		<tr>
 			<td id=<%= "id_#{ch.id}" %>><%= ch.id %></td>
+			<td id=<%= "submissions_#{ch.id}" %> style="text-align:center;"><span class="badge">42</span></td>
 			<td id=<%= "title_#{ch.id}" %>><a href = <%= "/load_modal?challenge_id=#{ch.id}" %> data-toggle="modal" data-target="#myModal"><%= ch.title %></a></td>
-			<td><button type="button" class="btn btn-success btn-sm btn-circle" <%= disable?("#{ch.id}") %> id=<%= "schedule_#{ch.id}" %>>Schedule</button></td>
+			<td><button type="button" class="btn btn-success btn-sm btn-circle popover-trigger" <%= disable?("#{ch.id}") %> id=<%= "schedule_#{ch.id}" %> data-placement="left" data-ajaxload=<%= "/load_datepicker?challenge_id=#{ch.id}" %>>Schedule</button></td>
 			<td><button type="button" class="btn btn-danger btn-sm btn-circle" <%= disable?("#{ch.id}") %> id=<%= "finish_#{ch.id}" %>>Finish</button>
 		</tr>
 		<% end %>

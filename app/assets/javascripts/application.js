@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 jQuery(document).ready(function () {
  	$('#myModal').on('hidden.bs.modal', function() {

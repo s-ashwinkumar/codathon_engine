@@ -1,0 +1,22 @@
+START TIME:
+<div id="datetimepicker1" class="input-append date">
+  <input id="start_time" data-format="MM/dd/yyyy hh:mm" type="text" class="input_datetimepicker" value=<%= start_date %>></input>
+</div>
+END TIME:
+<div id="datetimepicker2" class="input-append date">
+  <input id="end_time" data-format="dd/MM/yyyy hh:mm" type="text" class="input_datetimepicker" value=<%= end_date %>></input>
+</div>
+<%= hidden_field_tag "challenge_id", challenge.id %>
+<button type="button" class="btn btn-default btn-mini btn-circle" id="schedule_challenge_button">Schedule</button>
+<script type="text/javascript">
+$(function () {
+  $('#datetimepicker1').datetimepicker();
+  $('#datetimepicker2').datetimepicker();
+  $("#datetimepicker1").on("dp.change",function (e) {
+    $('#datetimepicker2').data("DateTimePicker").setMinDate(e.date);
+  });
+  $("#datetimepicker2").on("dp.change",function (e) {
+    $('#datetimepicker1').data("DateTimePicker").setMaxDate(e.date);
+  });
+});
+</script>
