@@ -28,7 +28,7 @@ class ChallengesController < ApplicationController
 		params["challenge"]["questions_attributes"].each do | index,obj |
 			if questions[index.to_i]
 				questions[index.to_i].update_attributes(obj)
-			else
+			elsif !obj["title"].empty?
 				Question.create(obj.merge(:challenge_id => params[:challenge_id]))
 			end		
 		end	
