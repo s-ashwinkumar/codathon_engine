@@ -1,0 +1,9 @@
+<% data.each_with_index do | obj,index | %>
+    	<tr>
+	        <td><%= index+1 %></td>
+            <td><%= obj[:name] %></td>
+            <td><%= obj[:score] %></td>
+            <td><%= obj[:submissions] %></td>
+        </tr>
+<% end %>	
+

@@ -20,7 +20,9 @@ jQuery(document).ready(function () {
  	$('#myModal').on('hidden.bs.modal', function() {
     	$(this).removeData('bs.modal');
 	});
-	
+	$('.popover').on('remove.bs.popover', function () {
+ 		$(this).removeData('bs.popover');
+	});
 });
 $(document).on("change",".customSelect",function() {
     $.ajax({

@@ -3,7 +3,7 @@
 	<%= select_month(@date,{},{:class => "customSelect"}) %>
 	<%= select_year(@date,{},{:class => "customSelect"}) %>
 	</div>
-    	<table id="rounded-corner" class="table responstable">
+    	<table id="rounded-corner" class="table responstable table-hover">
 		    <thead>
             	<tr>
                 	<th>S.No</th>
@@ -16,6 +16,7 @@
 	           	<%= render partial: "dashboard_data", locals: { data: @data } %>
         	</tbody>
 		</table>
+<%= will_paginate @data, renderer: BootstrapPagination::Rails %>
         <div class="alert alert-danger" role="alert" id="empty_data" hidden="hidden"><strong>Warning!</strong> No Data Found ! Please use a different filter</div>
 
 </div>

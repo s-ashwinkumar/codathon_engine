@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
 
 	def index
-		@challenges = Challenge.order("active DESC, start_date DESC").paginate(:page => params[:page], :per_page => 10)
+		@challenges = Challenge.order("active DESC, created_at DESC").paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def finish
@@ -54,5 +54,10 @@ class ChallengesController < ApplicationController
 			render :text => "Something went wrong !!!", :status => 500 and return
 		end
 	end
+
+	def create
+		Challenge.create({:title => params[:title], :start_date => params[:start_date], :end_date => params[:end_date], :active => true})
+		render :text => "Challenge created successfully", :status => 200 
+	end	
 
 end

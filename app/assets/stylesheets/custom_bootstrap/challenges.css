@@ -5,7 +5,7 @@
 
 .btn-mini {
 	border-radius: 10px 10px 10px 10px !important;
-	font-size:10px !important;
+	font-size:15px !important;
 }
 #challenges_list, #challenges_list TD, #challenges_list TH
 {
@@ -24,11 +24,15 @@
 }
 
 .popover{
-	font-size:10px !important;
+	font-size:13px !important;
 }
 
 .popover-content{
-	text-align: center !important;
+	text-align: right !important;
+}
+
+.popover-content > div,input,button{
+  margin-bottom: 10px;
 }
 
 .modal-body{

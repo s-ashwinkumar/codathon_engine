@@ -19,23 +19,6 @@ jQuery(document).ready(function () {
 jQuery(document).on("click","#schedule_challenge_button",function(){
     scheduleChallenge();
 });
-function finish_challenge(challenge_id) {
-	jQuery.ajax({
-        type : 'POST',
-        data:{
-        	challenge_id: challenge_id,
-            },
-        url: "/challenge/finish",
-        success: function(data) {
-        	jQuery("#finish_"+challenge_id).attr("disabled","disabled");
-        	jQuery("#schedule_"+challenge_id).attr("disabled","disabled");
-        	alert("Challenge closed successfully");
-            },
-        error: function(error){
-            alert("Something went wrong, please try again later.");
-            }
-        });
-}
 
 function finish_challenge(challenge_id) {
 	jQuery.ajax({
@@ -55,6 +38,48 @@ function finish_challenge(challenge_id) {
         });
 }
 
+function finish_challenge(challenge_id) {
+	jQuery.ajax({
+        type : 'POST',
+        data:{
+        	challenge_id: challenge_id,
+            },
+        url: "/challenge/finish",
+        success: function(data) {
+        	jQuery("#finish_"+challenge_id).attr("disabled","disabled");
+        	jQuery("#schedule_"+challenge_id).attr("disabled","disabled");
+        	alert("Challenge closed successfully");
+            },
+        error: function(error){
+            alert("Something went wrong, please try again later.");
+            }
+        });
+}
+
+jQuery(document).on("click","#addNewChallenge",function(){
+    
+    var title= jQuery("#title").val();
+    if(title === ""){
+        alert("Enter title");
+        return false;
+    }
+    jQuery.ajax({
+        type : 'POST',
+        data:{
+            title: title,
+            start_time: jQuery("#start_time").val(),
+            end_time: jQuery("#end_time").val(),
+            },
+        url: "/challenge/create",
+        success: function(data) {
+            alert("done deal");
+            window.location.reload();
+            },
+        error: function(error){
+            alert("Something went wrong, please try again later.");
+            }
+    });
+});
 function validateAndSaveChallenge() {
 	var titles = [];
 	var descriptions = [];
@@ -73,7 +98,6 @@ function validateAndSaveChallenge() {
 	}
 	jQuery('[id^=edit_challenge_]')[0].submit();	
 }
-
 function scheduleChallenge() {
     var challenge_id=jQuery("#challenge_id").val();
     var start_time = jQuery("#start_time").val();
@@ -87,7 +111,8 @@ function scheduleChallenge() {
             },
         url: "/challenge/schedule",
         success: function(data) {
-            alert("Challenge scheduled successfully");
+            alert("done deal");
+            window.location.reload();
             },
         error: function(error){
             alert("Something went wrong, please try again later.");

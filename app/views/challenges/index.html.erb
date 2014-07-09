@@ -10,7 +10,7 @@
 		<% @challenges.each do |ch| %>
 		<tr>
 			<td id=<%= "id_#{ch.id}" %>><%= ch.id %></td>
-			<td id=<%= "submissions_#{ch.id}" %> style="text-align:center;"><span class="badge">42</span></td>
+			<td id=<%= "submissions_#{ch.id}" %> style="text-align:center;"><span class="badge"><%= get_submission_count ch.id %></span></td>
 			<td id=<%= "title_#{ch.id}" %>><a href = <%= "/load_modal?challenge_id=#{ch.id}" %> data-toggle="modal" data-target="#myModal"><%= ch.title %></a></td>
 			<td><button type="button" class="btn btn-success btn-sm btn-circle popover-trigger" <%= disable?("#{ch.id}") %> id=<%= "schedule_#{ch.id}" %> data-placement="left" data-ajaxload=<%= "/load_datepicker?challenge_id=#{ch.id}" %>>Schedule</button></td>
 			<td><button type="button" class="btn btn-danger btn-sm btn-circle" <%= disable?("#{ch.id}") %> id=<%= "finish_#{ch.id}" %>>Finish</button>
@@ -19,11 +19,21 @@
 	</table>
 
 	<%= will_paginate @challenges, renderer: BootstrapPagination::Rails %>
-	
+	<button type="button" class="btn btn-primary " id="add_challenge" data-toggle="modal" data-target="#addModal">Add Challenge</button>
+	<!-- THIS IS A MODAL FOR QUESTIONS -->
 	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
   		<div class="modal-dialog modal-lg">	
   			<div class="modal-content">
   			</div>
   		</div>
 	</div>
+
+	<!-- THIS IS A MODAL FOR ADDING NEW CHALLENGE -->
+	<div class="modal fade" id="addModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<%= render :partial => "add_new_challenge" %>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </div>	
