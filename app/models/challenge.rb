@@ -3,7 +3,7 @@ class Challenge < ActiveRecord::Base
 
   has_many :questions
 
-
+  accepts_nested_attributes_for :questions
   scope :active, where(:active => true).order('start_date desc')
 
 end
