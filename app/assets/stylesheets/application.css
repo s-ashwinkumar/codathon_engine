@@ -12,7 +12,13 @@
  *= require_tree .
  *= require custom_bootstrap/custom_bootstrap
  *= require bootstrap-datetimepicker
+ *= require qtip2-jquery-rails
  */
+
+.qtip-alert{
+  min-width: 200px !important;
+}
+ 
 body {
     padding-top: 90px;
 }

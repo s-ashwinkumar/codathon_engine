@@ -23,15 +23,11 @@
   background: none !important; 
 }
 
-.popover{
-	font-size:13px !important;
-}
-
-.popover-content{
+.datepicker_elems{
 	text-align: right !important;
 }
 
-.popover-content > div,input,button{
+.datepicker_elems > input,button{
   margin-bottom: 10px;
 }
 
@@ -46,4 +42,8 @@
 
 .input_datetimepicker{
 	font-size: 15px !important;
+}
+
+.qtip-custom{
+  z-index: 9999 !important;
 }
