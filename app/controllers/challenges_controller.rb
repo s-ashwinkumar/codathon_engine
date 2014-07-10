@@ -1,9 +1,16 @@
 class ChallengesController < ApplicationController
+	layout "participant", :only => :user_index
 
 	def index
+		redirect_to user_index_path if !session[:user].is_a?Admin
 		@challenges = Challenge.order("active DESC, created_at DESC").paginate(:page => params[:page], :per_page => 10)
 	end
 
+	def user_index
+		@submissions = Submission.last(20)
+		@current_challenge = Challenge.currently_running
+	end
+		
 	def finish
 		challenge_id = params[:challenge_id]
 		ch = Challenge.find_by_id(challenge_id)

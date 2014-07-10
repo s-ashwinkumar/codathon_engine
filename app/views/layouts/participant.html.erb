@@ -46,12 +46,17 @@
         </ul>  
       </div><!--/.nav-collapse -->
       <!-- My account box-->
-      
+
     </div>
   </div>
 
-  <div class="container">
-    <%= yield %>
+  <div class="questions_container">
+    <div class="well sidebar" id="live_feed_container">
+      <%= render :partial => "shared/live_feed" %>
+    </div>
+    <div id="challenge_container" class="well main_section">
+      <%= yield %>
+    </div>
   </div>
   <!-- Footer -->
   <div class="footer navbar navbar-inverse navbar-fixed-bottom">   

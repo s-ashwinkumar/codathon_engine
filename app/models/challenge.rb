@@ -6,4 +6,8 @@ class Challenge < ActiveRecord::Base
   accepts_nested_attributes_for :questions
   scope :active, where(:active => true).order('start_date desc')
 
+  def self.currently_running
+  	Challenge.active.where("start_date <= NOW() and end_date >= NOW() ").first
+  end
+
 end

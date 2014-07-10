@@ -47,3 +47,41 @@
 .input_datetimepicker{
 	font-size: 15px !important;
 }
+
+.sidebar {
+  margin-left: 2%;
+  width:18%;
+  position:absolute;
+}
+
+.main_section {
+  width:76%;
+  position:relative;
+  float:right;
+  margin-right: 2%;
+  margin-bottom: 80px !important;
+  overflow: auto;
+}
+
+.live_feed_element {
+  padding-bottom: 15px;
+}
+
+.outside {
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.inside {
+    width: 120%;
+    max-height: 350px;
+    overflow: auto;
+}
+
+.questions_content {
+  border: 1px solid #E2DCD8;
+  margin: -1px 0 0;
+  padding: 15px 15px 15px 15px;
+}

@@ -1,0 +1,13 @@
+<ul class="nav nav-tabs nav-justified" role="tablist">
+	<% @current_challenge.questions.count.times do |i| %>
+  		<li <%= "id=question_tab_#{i}" %> <%= 'class=active' if i==0 %> ><a href="#">Question #<%= i+1 %></a></li>
+	<% end %>
+</ul>
+<div id="questions_content" class="questions_content" >
+	<% @current_challenge.questions.each_with_index do |ques,i| %>
+		<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
+			<h3><%= ques.title %></h3>
+			<div style="white-space: pre;"><%= ques.description %></div>
+		</div>
+	<% end %>
+</div>

@@ -28,8 +28,6 @@ body#homePageDesign{
 
 /*layout */
 
-.nav-side-bar{
-}
 .drop-extra{
 	font-size: 20px;
 	color: #5F5E66;
@@ -43,28 +41,17 @@ body#homePageDesign{
 /* Footer CSS */
 
 .footer{
-	color: #3F3F3F;
-	padding: 2% 0 2% 0;
     text-align: center;
+    vertical-align: middle;
+    opacity: 0.8;
 }
 
-.footer-social {
-    margin-bottom: 20px;
-    text-align: center;
+.navbar{
+	opacity: 0.85;
 }
 
-.footer-links{
-	margin-top: 20px;
-	font-size: 16px;
-}
 .footer-links > li{
 	display: inline;
-}
-
-
-.container{
-	height: 100%;
-	width: 100%;
 }
 
 .image-container{
@@ -155,4 +142,12 @@ body#homePageDesign{
     margin-right: 30px;
     padding: 0 10px;
     width: 135px;
+}
+
+.glyphicon-ok {
+	color: green;
+}
+
+.glyphicon-remove {
+	color: red;
 }
