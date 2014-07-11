@@ -63,24 +63,6 @@ function finish_challenge(challenge_id) {
     });
 }
 
-function finish_challenge(challenge_id) {
-    jQuery.ajax({
-        type : 'POST',
-        data:{
-            challenge_id: challenge_id,
-        },
-        url: "/challenge/finish",
-        success: function(data) {
-            jQuery("#finish_"+challenge_id).attr("disabled","disabled");
-            jQuery("#schedule_"+challenge_id).attr("disabled","disabled");
-            Alert("Challenge closed successfully", "Success !!");
-        },
-        error: function(error){
-            Alert("Something went wrong, please try again later.","Alert!!");
-        }
-    });
-}
-
 jQuery(document).on("click","#addNewChallenge",function(){
 
     var title= jQuery("#title").val();
@@ -92,8 +74,8 @@ jQuery(document).on("click","#addNewChallenge",function(){
         type : 'POST',
         data:{
             title: title,
-            start_time: jQuery('#start_time'+id).val(),
-            end_time: jQuery('#end_time'+id).val(),
+            start_date: moment(jQuery("#datetimepicker1").val()).valueOf(),
+            end_date: moment(jQuery("#datetimepicker2").val()).valueOf(),
         },
         url: "/challenge/create",
         success: function(data) {

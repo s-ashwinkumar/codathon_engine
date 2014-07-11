@@ -7,6 +7,7 @@ class ChallengesController < ApplicationController
 	end
 
 	def user_index
+		debugger
 		@submissions = Submission.last(20)
 		@current_challenge = Challenge.currently_running
 	end
@@ -63,7 +64,7 @@ class ChallengesController < ApplicationController
 	end
 
 	def create
-		Challenge.create({:title => params[:title], :start_date => params[:start_date], :end_date => params[:end_date], :active => true})
+		Challenge.create({:title => params[:title], :start_date => Time.at(params[:start_date].to_i/1000), :end_date => Time.at(params[:end_date].to_i/1000), :active => true})
 		render :text => "Challenge created successfully", :status => 200 
 	end	
 
