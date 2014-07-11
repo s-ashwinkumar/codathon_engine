@@ -44,8 +44,8 @@ class ChallengesController < ApplicationController
 
 	def load_datepicker
 		challenge = Challenge.find(params[:challenge_id])
-		start_date=challenge.start_date.strftime('%m/%d/%Y%l:%M %p').to_s
-		end_date=challenge.end_date.strftime('%m/%d/%Y%l:%M %p').to_s
+		start_date=challenge.start_date.strftime('%m/%d/%Y %l:%M %p').to_s
+		end_date=challenge.end_date.strftime('%m/%d/%Y %l:%M %p').to_s
 		render :partial => "load_datepicker", :locals => { challenge: challenge, start_date: start_date, end_date: end_date }
 	end
 

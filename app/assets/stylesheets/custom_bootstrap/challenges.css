@@ -23,15 +23,11 @@
   background: none !important; 
 }
 
-.popover{
-	font-size:13px !important;
-}
-
-.popover-content{
+.datepicker_elems{
 	text-align: right !important;
 }
 
-.popover-content > div,input,button{
+.datepicker_elems > input,button{
   margin-bottom: 10px;
 }
 
@@ -48,6 +44,7 @@
 	font-size: 15px !important;
 }
 
+<<<<<<< HEAD
 .sidebar {
   margin-left: 2%;
   width:18%;
@@ -84,4 +81,8 @@
   border: 1px solid #E2DCD8;
   margin: -1px 0 0;
   padding: 15px 15px 15px 15px;
+}
+
+.qtip-custom{
+  z-index: 9999 !important;
 }
