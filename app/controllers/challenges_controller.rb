@@ -7,7 +7,6 @@ class ChallengesController < ApplicationController
 	end
 
 	def user_index
-		debugger
 		@submissions = Submission.last(20)
 		@current_challenge = Challenge.currently_running
 	end
