@@ -1,0 +1,8 @@
+.dash_container {
+	height: 500px;
+}
+
+.inner_title {
+	height: 30px !important;
+	overflow: hidden;
+}
