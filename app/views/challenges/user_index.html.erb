@@ -10,7 +10,7 @@
 		<div style="white-space: pre-wrap;"><%= ques.description %></div>
 		<div <%= "id=solution_space_#{ques.id}" %>>	
 		<% if Submission.find_by_user_and_question(current_user,ques).present? %>
-			<h4><b>Opprtunity knocks your door only once !!!<br><small>You have already submitted your solution for this question</h4>
+			<h4><b>Opprtunity knocks your door only once !!!<br><small>You have already submitted your solution for this question</small></h4>
 		<% else %>
 			<h4><b>Paste your output here: </b> <small>(Ensure exact output format)</small></h4>
 			<div class="input-group" >
