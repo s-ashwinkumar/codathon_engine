@@ -13,6 +13,8 @@ Codathon::Application.routes.draw do
   match '/load_datepicker', to: 'challenges#load_datepicker', :as => "challenges_load_datepicker"
   match '/index', to: 'challenges#user_index', :as => "user_index"
   match '/challenge/create', to: 'challenges#create', :as =>"create_challenge"
+
+  match '/validate_submission', to: 'submissions#validate_submission', :as => 'validate_submission', :via => ['post']
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -190,3 +190,20 @@ function load_question_with_index(question_id) {
     });
 }
 
+function submitResponse(question_id) {
+    var solution=jQuery("#solution_"+question_id).val();
+    jQuery.ajax({
+        type : 'POST',
+        data:{
+            question_id: question_id,
+            solution: solution,
+        },
+        url: "/validate_submission",
+        success: function(data) {
+            Alert("Done !!!", "Success !!");
+        },
+        error: function(error){
+            Alert("Bong !!!","Alert!!");
+        }
+    });
+}
