@@ -1,18 +1,24 @@
 <ul class="nav nav-tabs nav-justified" role="tablist">
 	<% @current_challenge.questions.count.times do |i| %>
-  		<li <%= "id=question_tab_#{i}" %> <%= 'class=active' if i==0 %> ><a href="#">Question #<%= i+1 %></a></li>
+	<li <%= "id=question_tab_#{i}" %> <%= 'class=active' if i==0 %> ><a href="#">Question #<%= i+1 %></a></li>
 	<% end %>
 </ul>
 <div id="questions_content" class="questions_content" >
 	<% @current_challenge.questions.each_with_index do |ques,i| %>
-		<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
-			<h3><%= ques.title %></h3>
-			<div style="white-space: pre-wrap;"><%= ques.description %></div>
-				<h4><b>Paste your output here: </b> <small>(Ensure exact output format)</small></h4>
+	<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
+		<h3><%= ques.title %></h3>
+		<div style="white-space: pre-wrap;"><%= ques.description %></div>
+		<div <%= "id=solution_space_#{ques.id}" %>>	
+		<% if Submission.find_by_user_and_question(current_user,ques).present? %>
+			<h4><b>Opprtunity knocks your door only once !!!<br><small>You have already submitted your solution for this question</h4>
+		<% else %>
+			<h4><b>Paste your output here: </b> <small>(Ensure exact output format)</small></h4>
 			<div class="input-group" >
 				<textarea <%= "id=solution_#{ques.id}" %> class="form-control" rows="5"></textarea>
 				<span class="input-group-addon btn btn-primary" onclick=<%= "submitResponse(#{ques.id})" %>>Submit</span>
 			</div>
+		<% end %>
 		</div>
+	</div>
 	<% end %>
 </div>
