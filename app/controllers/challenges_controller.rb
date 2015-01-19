@@ -7,7 +7,7 @@ class ChallengesController < ApplicationController
 	end
 
 	def user_index
-		@submissions = Submission.last(20)
+		@submissions = Submission.live_feed
 		@current_challenge = Challenge.currently_running || Challenge.new
 	end
 		
