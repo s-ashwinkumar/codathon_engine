@@ -3,4 +3,8 @@ class Submission < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :question
+
+  def self.find_by_user_and_question(user, question)
+  	self.find_by_user_id_and_question_id(user.id, question.id)
+  end
 end

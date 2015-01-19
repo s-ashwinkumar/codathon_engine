@@ -200,10 +200,11 @@ function submitResponse(question_id) {
         },
         url: "/validate_submission",
         success: function(data) {
-            Alert("Done !!!", "Success !!");
+            Alert(data.text, "Solution submitted successfully !!"); 
+            jQuery("#solution_space_"+data.question_id).html("<h4><b>Opprtunity knocks your door only once !!!<br><small>You have submitted your solution for this question</h4>");
         },
         error: function(error){
-            Alert("Bong !!!","Alert!!");
+            Alert("Something went wrong!!!");
         }
     });
 }

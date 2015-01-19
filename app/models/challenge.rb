@@ -10,4 +10,8 @@ class Challenge < ActiveRecord::Base
   	Challenge.active.where("start_date <= NOW() and end_date >= NOW() ").first
   end
 
+  def start_and_end_time_html
+  	(start_date.strftime("%b %d, %Y %I:%M %p") + " to " + end_date.strftime("%b %d, %Y %I:%M %p")).html_safe
+  end
+
 end

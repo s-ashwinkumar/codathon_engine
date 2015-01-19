@@ -5,9 +5,9 @@ class SubmissionsController < ApplicationController
   before_filter :check_loggedin
 
   def check_loggedin
-  	if !(session[:cas_user])
-  		redirect_to '/'
-  	end
+    if !(session[:cas_user])
+      redirect_to '/'
+    end
   end
 
   def validate_submission
@@ -20,9 +20,9 @@ class SubmissionsController < ApplicationController
       end
       question.create_submission(current_user,flag.present?)
       if flag
-        render :text => "Challenge scheduled successfully", :status => 200 and return
+        render :json => {:text => "Sahi jawab boss !!!", :question_id => question.id}, :status => 200 and return
       else
-        render :text => "Something went wrong !!!", :status => 500 and return
+        render :json => {:text => "ROFL !!! You thought THAT was right !!!", :question_id => question.id}, :status => 200 and return
       end
     else
       render :text => "Something went wrong !!!", :status => 500 and return
