@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
     end
  end
 
+ def current_user
+  User.find_by_user_name(session[:cas_user])
+ end
+
 end
