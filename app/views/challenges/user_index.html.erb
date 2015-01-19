@@ -11,7 +11,6 @@
 			<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
 				<h3><%= ques.title %></h3>
 			<div style="white-space: pre-wrap;"><%= ques.description %></div>
-				<div style="white-space: pre;"><%= ques.description %></div>
 				<h4><b>Paste your output here: </b> <small>(Ensure exact output format)</small></h4>
 			<div class="input-group" >
 				<textarea <%= "id=solution_#{ques.id}" %> class="form-control" rows="5"></textarea>
