@@ -8,7 +8,7 @@ class ChallengesController < ApplicationController
 
 	def user_index
 		@submissions = Submission.last(20)
-		@current_challenge = Challenge.currently_running
+		@current_challenge = Challenge.currently_running || Challenge.new
 	end
 		
 	def finish
