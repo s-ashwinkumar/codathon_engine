@@ -14,7 +14,6 @@ class SubmissionsController < ApplicationController
     question_id = params["question_id"]
     solution = params["solution"]
     question = Question.find_by_id(question_id)
-    debugger
     if question
       if question.test_case_output.gsub("\r","").strip == solution.strip
         flag = true
