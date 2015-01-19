@@ -4,10 +4,14 @@
 	<% end %>
 </ul>
 <div id="questions_content" class="questions_content" >
-	<% @current_challenge.questions.each_with_index do |ques,i| %>
-		<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
-			<h3><%= ques.title %></h3>
-			<div style="white-space: pre;"><%= ques.description %></div>
-		</div>
+	<% if @current_challenge.new_record? %>
+		No Challenges running.
+	<% else %>
+		<% @current_challenge.questions.each_with_index do |ques,i| %>
+			<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
+				<h3><%= ques.title %></h3>
+				<div style="white-space: pre;"><%= ques.description %></div>
+			</div>
+		<% end %>
 	<% end %>
 </div>
