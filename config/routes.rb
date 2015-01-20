@@ -14,6 +14,9 @@ Codathon::Application.routes.draw do
   match '/index', to: 'challenges#user_index', :as => "user_index"
   match '/challenge/create', to: 'challenges#create', :as =>"create_challenge"
 
+  match '/delete_test_case', to: 'questions#delete_test_case', :as => 'delete_test_case', :via => ['post']
+
+
   match '/validate_submission', to: 'submissions#validate_submission', :as => 'validate_submission', :via => ['post']
   # The priority is based upon order of creation:
   # first created -> highest priority.

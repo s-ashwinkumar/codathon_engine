@@ -1,6 +1,6 @@
 class PracticesController < ApplicationController
 	layout "participant"
 	def index
-		@submissions ||= []
+		@submissions = Submission.live_feed
 	end
 end

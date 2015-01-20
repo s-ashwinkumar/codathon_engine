@@ -95,8 +95,8 @@ function validateAndSaveChallenge() {
      titles[i] = jQuery("#challenge_questions_attributes_"+ i +"_title").val();
      descriptions[i] = jQuery("#challenge_questions_attributes_"+ i +"_description").val();
      points[i] = jQuery("#challenge_questions_attributes_"+ i +"_points").val();
-     if(!(titles[i]=="" && descriptions[i]=="" && points[i]=="")) {
-      if(titles[i]=="" || descriptions[i]=="" || points[i]=="") {
+     if(!(titles[i]=="" && descriptions[i]=="")) {
+      if(titles[i]=="" || descriptions[i]=="") {
         Alert("Incomplete data for the question", "Validation Failure !!");
         return false;
     }
@@ -202,6 +202,34 @@ function submitResponse(question_id) {
         success: function(data) {
             Alert(data.text, "Solution submitted successfully !!"); 
             jQuery("#solution_space_"+data.question_id).html("<h4><b>Opprtunity knocks your door only once !!!<br><small>You have submitted your solution for this question</h4>");
+        },
+        error: function(error){
+            Alert("Something went wrong!!!");
+        }
+    });
+}
+
+function addTestCase(question_id) {
+    var count=jQuery('[id^="test_case_'+question_id+'_row_"]').size();
+    var row_content="<div class='col-sm-2'><input class='form-control' name='challenge[questions_attributes][0][test_cases]["+count+"][points]' size='2' maxWidth='2' placeholder='Points'></div>";
+    var input_content="<div class='col-sm-5'><input class='form-control' name='challenge[questions_attributes][0][test_cases]["+count+"][input_file]' type='file' title='Input Test Case'></div>";
+    var output_content="<div class='col-sm-5'><input class='form-control' name='challenge[questions_attributes][0][test_cases]["+count+"][output_file]' type='file' title='Output Test Case'></div>";
+
+    var content="<div class='form_group' id = test_case_"+question_id+"_row_"+count+">"+row_content+input_content+output_content+"</div></br>"
+    jQuery("#test_cases_"+question_id).append(content);
+}
+
+function deleteTestCase(question_id, test_case_index)
+{
+    jQuery.ajax({
+        type : 'POST',
+        data:{
+            question_id: question_id,
+            test_case_index: test_case_index,
+        },
+        url: "/delete_test_case",
+        success: function(data) {
+            jQuery("#test_case_"+data.question_id+"_row_"+data.test_case_index).remove();
         },
         error: function(error){
             Alert("Something went wrong!!!");

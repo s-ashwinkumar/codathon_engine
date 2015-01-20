@@ -27,6 +27,9 @@ end
 
 gem 'jquery-rails'
 
+#For file uploads
+gem 'paperclip'
+
 # Twitter BootStrap gem - Documentation/Dev - https://github.com/metaskills/less-rails-bootstrap
 gem 'less-rails-bootstrap'
 gem 'will_paginate-bootstrap'

@@ -32,11 +32,13 @@ class ChallengesController < ApplicationController
 	def save_challenge
 		challenge = Challenge.find_by_id(params[:challenge_id])
 		questions = challenge.questions
-		params["challenge"]["questions_attributes"].each do | index,obj |
+		params["challenge"]["questions_attributes"].each do | index,ele |
+			obj = ele.dup.reject{|k,v| k=="test_cases" }
+			test_cases = ele["test_cases"]
 			if questions[index.to_i]
-				questions[index.to_i].update_attributes(obj)
+				questions[index.to_i].update_question_with_test_cases(obj,test_cases)
 			elsif !obj["title"].empty?
-				Question.create(obj.merge(:challenge_id => params[:challenge_id]))
+				Question.create_with_test_cases(obj.merge(:challenge_id => params[:challenge_id]),test_cases)
 			end		
 		end	
 		redirect_to '/challenges'
