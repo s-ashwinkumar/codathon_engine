@@ -209,11 +209,11 @@ function submitResponse(question_id) {
     });
 }
 
-function addTestCase(question_id) {
+function addTestCase(question_id, index) {
     var count=jQuery('[id^="test_case_'+question_id+'_row_"]').size();
-    var row_content="<div class='col-sm-2'><input class='form-control' name='challenge[questions_attributes][0][test_cases]["+count+"][points]' size='2' maxWidth='2' placeholder='Points'></div>";
-    var input_content="<div class='col-sm-5'><input class='form-control' name='challenge[questions_attributes][0][test_cases]["+count+"][input_file]' type='file' title='Input Test Case'></div>";
-    var output_content="<div class='col-sm-5'><input class='form-control' name='challenge[questions_attributes][0][test_cases]["+count+"][output_file]' type='file' title='Output Test Case'></div>";
+    var row_content="<div class='col-sm-2'><input class='form-control' name='challenge[questions_attributes]["+index+"][test_cases]["+count+"][points]' size='2' maxWidth='2' placeholder='Points'></div>";
+    var input_content="<div class='col-sm-5'><input class='form-control' name='challenge[questions_attributes]["+index+"][test_cases]["+count+"][input_file]' type='file' title='Input Test Case'></div>";
+    var output_content="<div class='col-sm-5'><input class='form-control' name='challenge[questions_attributes]["+index+"][test_cases]["+count+"][output_file]' type='file' title='Output Test Case'></div>";
 
     var content="<div class='form_group' id = test_case_"+question_id+"_row_"+count+">"+row_content+input_content+output_content+"</div></br>"
     jQuery("#test_cases_"+question_id).append(content);
