@@ -15,11 +15,10 @@ class QuestionsController < ApplicationController
   end
 
   def delete_test_case
-    ques = Question.find_by_id(params[:question_id])
-    test_case = ques.question_test_cases[params[:test_case_index].to_i] if ques
-    if ques && test_case
-      test_case.delete
-      render :json => {:question_id => ques.id, :test_case_index => params[:test_case_index]}, :status => 200
+    qtc = QuestionTestCase.find_by_id(params[:question_test_case_id])
+    if qtc
+      qtc.delete
+      render :json => {:question_id => qtc.question.id, :test_case_id => qtc.id, :status => 200 }
     else
       render :text => "Error!", :status => 500
     end

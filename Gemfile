@@ -30,6 +30,9 @@ gem 'jquery-rails'
 #For file uploads
 gem 'paperclip'
 
+#For ajax file uploads
+gem 'remotipart', '~> 1.2'
+
 # Twitter BootStrap gem - Documentation/Dev - https://github.com/metaskills/less-rails-bootstrap
 gem 'less-rails-bootstrap'
 gem 'will_paginate-bootstrap'

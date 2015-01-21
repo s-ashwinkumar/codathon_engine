@@ -40,11 +40,11 @@
           </div>
           <div class="form-group" <%= "id=test_cases_#{builder.object.id}" %>>
             <% builder.object.question_test_cases.each_with_index do |qtc,qindex| %>
-            <div <%= "id = test_case_#{builder.object.id}_row_#{qindex}" %>>
+            <div <%= "id = test_case_#{builder.object.id}_row_#{qtc.id}" %>>
               <span class="col-sm-3">Points: <%= qtc.points %></span>
               <span class="col-sm-4">Input Test Case: <%= link_to("Download Input",qtc.input_file.url) %></span>
               <span class="col-sm-4">Output Test Case: <%= link_to("Download Output",qtc.output_file.url) %></span>
-              <span class="col-sm-1"><%= link_to_function("X","deleteTestCase(#{builder.object.id},#{qindex})")%></span>
+              <span class="col-sm-1"><%= link_to_function("X","deleteTestCase(#{qtc.id})")%></span>
             </div>
             <% end %>
           </div>

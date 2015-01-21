@@ -2,6 +2,7 @@ class QuestionTestCase < ActiveRecord::Base
   attr_accessible :question_id, :points, :input_file, :output_file
 
   belongs_to :question
+	has_many	:submissions
 
   has_attached_file :input_file
   has_attached_file :output_file

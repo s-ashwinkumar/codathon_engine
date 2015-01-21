@@ -11,16 +11,19 @@
 	<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
 		<h3><%= ques.title %></h3>
 		<div style="white-space: pre-wrap;"><p><%= ques.description %></p></div>
-		<div <%= "id=solution_space_#{ques.id}" %> class="well">	
+		<div <%= "id=solution_space_#{ques.id}" %> >	
 			<% ques.question_test_cases.each_with_index do |qtc,index| %>
-				<p class="container-fluid">
+				<div class="container-fluid well">
 					<label class="col-md-2">Test Case <%= index+1 %></label>
 					<span <%= "id=user_test_case_#{qtc.id}" %>>
 						<span class="col-md-2"><%= link_to("Test Case Input",qtc.input_file.url) %></span>
-						<span class="col-md-4"><input name="input_file" type="file" class="file-input"></span>
-						<input type="button" value="Submit" class="btn btn-default" <%= "onclick=submissionAttempt(#{qtc.id}) " %>/>
 					</span>
-				</p>
+					<%= form_tag("/validate_submission", :multipart => true, :id => "submission_form_id_#{qtc.id}", remote: true, class: "form-inline") do %>
+					<span class="col-md-4 form-group"><input name="solution_file" type="file" class="file-input"></span>
+					<%= hidden_field_tag "test_case_id",qtc.id %>
+					<input type="submit" value="Submit" class="btn btn-default form-group"	/>
+					<% end %>
+				</div>
 			<% end %>
 		</div>
 	</div>

@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   attr_accessible :challenge_id, :description, :title
 
   belongs_to :challenge
-  has_many :submissions
+  has_many :submissions, :through => :question_test_cases
   has_many :question_test_cases
 
   def create_submission(current_user, result)

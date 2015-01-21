@@ -1,4 +1,10 @@
 jQuery(document).ready(function () {
+    $('[id^=submission_form_id_]').bind("ajax:success", function(data){
+        $(this).remove();
+    });
+    $('[id^=submission_form_id_]').bind("ajax:error", function(data){
+        Alert("Let me see !!! Oops !!! Something went wrong !!!");
+    });
 	jQuery('[id^=finish_]').each(function(index,element) {
 		element.onclick = function() {
 			finish_challenge(/(\d+)$/.exec(element.id)[0]);
@@ -219,17 +225,16 @@ function addTestCase(question_id, index) {
     jQuery("#test_cases_"+question_id).append(content);
 }
 
-function deleteTestCase(question_id, test_case_index)
+function deleteTestCase(question_test_case_id)
 {
     jQuery.ajax({
         type : 'POST',
         data:{
-            question_id: question_id,
-            test_case_index: test_case_index,
+            question_test_case_id: question_test_case_id,
         },
         url: "/delete_test_case",
         success: function(data) {
-            jQuery("#test_case_"+data.question_id+"_row_"+data.test_case_index).remove();
+            jQuery("#test_case_"+data.question_id+"_row_"+data.test_case_id).remove();
         },
         error: function(error){
             Alert("Something went wrong!!!");
