@@ -18,10 +18,12 @@
 					<span <%= "id=user_test_case_#{qtc.id}" %>>
 						<span class="col-md-2"><%= link_to("Test Case Input",qtc.input_file.url) %></span>
 					</span>
-					<%= form_tag("/validate_submission", :multipart => true, :id => "submission_form_id_#{qtc.id}", remote: true, class: "form-inline") do %>
-					<span class="col-md-4 form-group"><input name="solution_file" type="file" class="file-input"></span>
-					<%= hidden_field_tag "test_case_id",qtc.id %>
-					<input type="submit" value="Submit" class="btn btn-default form-group"	/>
+					<% if !qtc.submitted?(current_user) %>
+						<%= form_tag("/validate_submission", :multipart => true, :id => "submission_form_id_#{qtc.id}", remote: true, class: "form-inline") do %>
+						<span class="col-md-4 form-group"><input name="solution_file" type="file" class="file-input"></span>
+						<%= hidden_field_tag "test_case_id",qtc.id %>
+						<input type="submit" value="Submit" class="btn btn-default form-group"	/>
+						<% end %>
 					<% end %>
 				</div>
 			<% end %>

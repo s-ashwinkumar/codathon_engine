@@ -11,4 +11,8 @@ class QuestionTestCase < ActiveRecord::Base
   :content_type => { :content_type => "text/plain" }
   validates_attachment :output_file, :presence => true,
   :content_type => { :content_type => "text/plain" }
+
+  def submitted?(current_user)
+  	submissions.detect{|sub| sub.user == current_user}
+  end
 end

@@ -5,7 +5,7 @@
 			<ul class="list-unstyled">
 				<% @submissions.each do |sub| %>
 				<li class="live_feed_element">
-					<span class="glyphicon <%= sub.result ? 'glyphicon-ok' : 'glyphicon-remove' %>"></span>
+					<span class="glyphicon glyphicon-floppy-saved"></span>
 					<%= "#{sub.user.full_name}" %> 
 				</li>
 				<% end %>

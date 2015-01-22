@@ -16,7 +16,7 @@ class SubmissionsController < ApplicationController
     begin
       qtc = QuestionTestCase.find(@test_case_id)
       sub = Submission.create(:user_id => current_user.id, :question_test_case_id => qtc.id, :solution_file => @input_file)
-      if sub 
+      if sub.save!
         if FileUtils.identical?(sub.solution_file.path,qtc.output_file.path)
           sub.update_attributes(:result=>true, :score=>qtc.points)
           render status: 200
@@ -25,11 +25,11 @@ class SubmissionsController < ApplicationController
           render status: 200
         end
       else
+        render status: 500
         @invalid = true
       end
     rescue Exception => e
-      invalid_submission = Submission.find_by_user_and_question_test_case(current_user,QuestionTestCase.find_by_id(@test_case_id))
-      invalid_submission.destroy if invalid_submission
+      render status: 500
       @invalid=true
     ensure
 

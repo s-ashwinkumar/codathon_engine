@@ -7,6 +7,7 @@ class Submission < ActiveRecord::Base
   has_attached_file :solution_file
 
 	validates_attachment :solution_file, :content_type => { :content_type => "text/plain" }
+	validates :user_id, uniqueness: {scope: :question_test_case_id, :message => "You have had your chance !!!"}
 
   scope :live_feed, -> { order("id DESC").limit(10) }
 
