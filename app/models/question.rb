@@ -34,4 +34,21 @@ class Question < ActiveRecord::Base
  			end
  		end if test_cases
  	end
+
+ 	#returns [correct_subs_count, all_subs_count]
+ 	def submissions_result
+ 		[right_submissions, self.submissions.count]
+ 	end
+
+ 	def right_submissions
+ 		self.submissions.where("result = ?", true).count
+ 	end
+
+ 	def points
+ 		question_test_cases.collect{|qt| qt.points}.sum
+ 	end
+
+ 	def score
+ 		submissions.collect{|sub| sub.score.to_i}.sum
+ 	end
 end

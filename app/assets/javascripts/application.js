@@ -16,6 +16,8 @@
 //= require twitter/bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
+//= require Chart
+//= require excanvas
 //= require qtip2-jquery-rails
 //= require_tree .
 // Alert/Confirm/Prompt

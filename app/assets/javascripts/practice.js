@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
 function load_practice_question_with_index(question_id) {
     jQuery(".on_display").fadeOut("slow", function() {
             jQuery(".on_display").removeClass().addClass("hide");
-    })
+    });
     jQuery(".active").removeClass();
     jQuery("#practice_questions_content").slideUp("slow", function() {
         jQuery("#practice_question_tab_"+question_id).addClass("active");
@@ -20,11 +20,9 @@ function load_practice_question_with_index(question_id) {
 }
 
 function practice_submitResponse(question_id) {
-    if(jQuery("#practice_solution_" + question_id).val().trim().length == 0){
-        Alert("Bong !!!","Alert!!");
+    if(jQuery("#practice_output_file_" + question_id).val().trim().length == 0){
+        Alert("Please select a file!");
     }else{
-        Alert("Done !!!", "Success !!");
-        jQuery("#practice_solution_space_"+question_id).html("<h4><b>Opprtunity knocks your door only once !!!<br><small>You have submitted your solution for this question</h4>");
-
+        jQuery("#practice_submit_area_"+question_id).html("");
     }
 }

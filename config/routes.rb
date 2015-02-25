@@ -4,6 +4,9 @@ Codathon::Application.routes.draw do
 
   match '/logout', to: 'application#logout'
   match '/dashboards', to: 'dashboards#index', :as => "dashboards"
+  match '/average_score_charts', to: 'dashboards#average_score_charts', :as => "average_score_charts"
+  match '/engagement_charts', to: 'dashboards#engagement_charts', :as => "engagement_charts"
+  match '/individual_score_chart', to: 'dashboards#individual_score_chart', :as => "individual_score_chart"
   match '/challenges', to: 'challenges#index', :as => "challenges"
   match '/practices', to: 'practices#index', :as => "practices"
   match '/challenge/finish', to: 'challenges#finish', :as => "challenge_finish"
