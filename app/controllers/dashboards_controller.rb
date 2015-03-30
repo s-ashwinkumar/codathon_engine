@@ -25,8 +25,8 @@ class DashboardsController < ApplicationController
 		end
 		if request.xhr?
 			render :partial => "dashboard_data", :locals => { data: @data}
-		end	
-	end	
+		end
+	end
 
 	def average_score_charts
 		@response = {}
@@ -50,7 +50,7 @@ class DashboardsController < ApplicationController
 		@response[:user_scores] = {}
 		@response[:user_questions_scores] = []
 		@response[:challenge] = Challenge.find_by_id(params[:challenge_id])
-		
+
 		render :partial => "individual_score_chart"
 	end
 
@@ -69,22 +69,29 @@ class DashboardsController < ApplicationController
 	private
 
 	def average_scores(challenge_id = nil)
-		if challenge_id
-			challenge_engagement = Challenge.member_engagement(challenge_id)[0][1]
-			challenge_questions = Challenge.find(challenge_id).questions
-			total_points = challenge_questions.collect{|q| q.points.to_i}.sum
-			total_scores = 0
-			challenge_questions.each do |chq|
-				total_scores += chq.score
+		if current_user.admin?
+			if challenge_id
+				challenge_engagement = Challenge.member_engagement(challenge_id)[0][1]
+				challenge_questions = Challenge.find(challenge_id).questions
+				total_points = challenge_questions.collect{|q| q.points.to_i}.sum
+				total_scores = 0
+				challenge_questions.each do |chq|
+					total_scores += chq.score
+				end
+				avg_score = (challenge_engagement == 0 ? 0 : total_scores.to_f / challenge_engagement)
+				[avg_score, total_points]
+			else
+				total_points = Challenge.all.collect{|c| c.questions.collect{|q| q.points.to_i}}.flatten.sum
+				total_scores = Challenge.all.collect{|c| c.questions.collect{|q| q.score}}.flatten.sum
+				challenges_engagement = Challenge.member_engagement.collect{|e| e[1]}.sum
+				avg_score = (challenges_engagement == 0 ? 0 : total_scores.to_f / challenges_engagement)
+				[avg_score, total_points]
 			end
-			avg_score = (challenge_engagement == 0 ? 0 : total_scores.to_f / challenge_engagement)
-			[avg_score, total_points]
 		else
-			total_points = Challenge.all.collect{|c| c.questions.collect{|q| q.points.to_i}}.flatten.sum
-			total_scores = Challenge.all.collect{|c| c.questions.collect{|q| q.score}}.flatten.sum
-			challenges_engagement = Challenge.member_engagement.collect{|e| e[1]}.sum
-			avg_score = (challenges_engagement == 0 ? 0 : total_scores.to_f / challenges_engagement) 
-			[avg_score, total_points]
+			challenge_count = Challenge.all.select{|chal| chal.attempted_by_current_user?(current_user)}.count
+			total_points_user = Challenge.all.collect{|chal| chal.user_scores[current_user.id].to_i}.inject(:+)
+			average_score = total_points_user.to_f / challenge_count
+			[average_score, challenge_count]
 		end
 	end
 end

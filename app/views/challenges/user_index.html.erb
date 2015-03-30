@@ -8,10 +8,10 @@
 		No Challenges running.
 	<% else %>
 		<% @current_challenge.questions.each_with_index do |ques,i| %>
-	<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden" %>>
+	<div <%= "id=question_data_#{i}" %> <%= i==0 ? "class=on_display" : "class=hidden " %>>
 		<h3><%= ques.title %></h3>
 		<div style="white-space: pre-wrap;"><p><%= ques.description %></p></div>
-		<div <%= "id=solution_space_#{ques.id}" %> >	
+		<div <%= "id=solution_space_#{ques.id}" %> >
 			<% ques.question_test_cases.each_with_index do |qtc,index| %>
 				<div class="container-fluid well">
 					<label class="col-md-2">Test Case <%= index+1 %></label>

@@ -7,6 +7,7 @@ class Challenge < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions
   scope :active, where(:active => true).order('start_date desc')
+  scope :upcoming, lambda{|today| where(:active => true).where("start_date > '#{today.to_s(:db)}'").order('start_date asc')}
 
   def self.currently_running
   	Challenge.active.where("start_date <= NOW() and end_date >= NOW() ").first
@@ -40,4 +41,9 @@ class Challenge < ActiveRecord::Base
   def user_scores #{user_id => total_score_for_challenge}
     submissions.sum(:score, :group => :user_id)
   end
+
+  def attempted_by_current_user?(user)
+    return questions.collect{|ques| ques.attempted_by_current_user?(user) }.inject(:|)
+  end
+
 end

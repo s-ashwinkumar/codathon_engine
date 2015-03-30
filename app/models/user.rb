@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   def self.check_for_user(session)
   	user_hash = {:user_name => session[:cas_user] ,:full_name => session[:cas_extra_attributes]["cn"][0],:active => true,:email => session[:cas_extra_attributes]["mail"][0],:emp_id => -1,:role => 'Participant'}
   	user = User.where("user_name = ?",user_hash[:user_name]).first_or_create!(user_hash)
-  end	
+  end
 
   def self.dashboard_data(month ,year)
   	from_date  = DateTime.new(year || Time.now.year, month || Time.now.month).beginning_of_month
@@ -21,8 +21,13 @@ class User < ActiveRecord::Base
         # h[:score] = submissions.group(:question_id).collect(&:score).inject(&:+)
   		  h[:submissions] = submissions.count
   		  result_array << h
-      end  
-  	end	
+      end
+  	end
   	result_array
-  end	
+  end
+
+  def admin?
+    role=="Admin"
+  end
+
 end

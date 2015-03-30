@@ -19,8 +19,8 @@
   vertical-align: middle;
 }
 
-.carousel-control.left, .carousel-control.right{ 
-  background: none !important; 
+.carousel-control.left, .carousel-control.right{
+  background: none !important;
 }
 
 .datepicker_elems{
@@ -89,4 +89,8 @@
 input:focus {
     border-color: #000000;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.huge {
+  font-weight: bold;
 }

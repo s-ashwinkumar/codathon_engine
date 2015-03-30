@@ -51,4 +51,9 @@ class Question < ActiveRecord::Base
  	def score
  		submissions.collect{|sub| sub.score.to_i}.sum
  	end
+
+  def attempted_by_current_user?(user)
+    question_test_cases.collect{|qtc| Submission.find_by_user_and_question_test_case(user, qtc).present? }.inject(:|)
+  end
+
 end
