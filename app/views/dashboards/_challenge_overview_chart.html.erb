@@ -1,0 +1,92 @@
+<div class = "row">
+  <div class = "col-lg-6 col-md-6">
+    <h4><span class="glyphicon glyphicon-tower"></span> Challenge: <%= current_challenge.title %></h4>
+  </div>
+  <div class = "col-lg-3 col-md-6">
+    <h4><span class="glyphicon glyphicon-flag"></span> <%= pluralize(current_challenge.questions.count, 'Question') %></h4>
+  </div>
+  <div class = "col-lg-3 col-md-6">
+    <h4><span class="glyphicon glyphicon-user"></span> <%= pluralize(current_challenge.member_engagement, 'Member') %> engaged</h4>
+  </div>
+</div>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div class="row">
+  <h3>Submissions results </h3>
+  <div class="col-lg-8 col-md-6">
+    <% chart_data[:results].each_with_index do |r,i| %>
+        <p><%= "Question #{i + 1}, #{chart_data[:results][i][0]} right out of #{chart_data[:results][i][1]}" %></p> 
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" style = "<%= 'width: ' + (chart_data[:results][i][0].to_f/chart_data[:results][i][1] * 100).to_s + '%' %>" >
+            <span class="sr-only">35% Complete (success)</span>
+          </div>
+          <div class="progress-bar progress-bar-danger progress-bar-striped" style = "<%= 'width: ' + ((chart_data[:results][i][1]-chart_data[:results][i][0]).to_f/chart_data[:results][i][1] * 100).to_s + '%' %>" >
+            <span class="sr-only">20% Complete (warning)</span>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div id="container2" style="min-width: 310px; height: 300px; max-width: 100px; margin: 0 auto"></div>
+  </div>
+</div>
+
+<script>
+    cats = <%= raw chart_data[:labels].to_json %>
+    var serie_bar = function(dataset){
+        ds = [];
+        for(i=0; i<dataset.length; i++){
+            ds[i] = {type: 'column', name: 'Question' + (i + 1), data: dataset[i]};
+        }
+        return ds;
+    };
+
+    var serie_pie = function(resultset){
+        ds = [];
+        rights = totals = 0;
+        for(i=0; i<resultset.length; i++){
+            rights += resultset[i][0];
+            totals += resultset[i][1];
+        }
+        ds[0] = {type: 'pie', name: 'Submissions result', data: [['Rights', rights],['Wrongs', totals - rights]]};
+        return ds;
+    };
+
+    $(function () {
+      $('#container').highcharts({
+          title: {
+              text: '<%= current_challenge.title %> Submissions'
+          },
+          xAxis: {
+              categories: cats
+          },
+          yAxis: {
+              title: {
+                  text: 'Submissions',
+              }
+          },
+          series: serie_bar(<%= raw chart_data[:datasets].to_json %>)
+      });
+  });
+
+  $(function () {
+      $('#container2').highcharts({
+          chart: {
+              backgroundColor: "rgba(255, 255, 255, 0)",
+              plotBackgroundColor: "rgba(255, 255, 255, 0)"
+          },
+          title: {
+              text: 'Overall Submissions result'
+          },
+          tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+              }
+          },
+          series: serie_pie(<%= raw chart_data[:results].to_json %>)
+      });
+  });
+</script>

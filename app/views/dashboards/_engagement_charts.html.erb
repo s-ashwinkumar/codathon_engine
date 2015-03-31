@@ -1,0 +1,49 @@
+<div class = "row">
+  <div class = "col-lg-6 col-md-6">
+    <h4><span class="glyphicon glyphicon-user"></span> Overall Engagement: <%= @response[:overall_engagement] %> / Challenge</h4>
+  </div>
+  <div class = "col-lg-6 col-md-6">
+    <h4><span class="glyphicon glyphicon-flag"></span> Max Engagement: <%= pluralize(@response[:engagements].max, 'Member') %></h4>
+  </div>
+</div>
+<div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+$(function () {
+    $('#container3').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Members Engagement'
+        },
+        xAxis: {
+            categories: <%= raw @response[:challenge_names].to_json %>
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Engagement'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"> {point.y}<b> users</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Engagement',
+            data: <%= @response[:engagements].to_json %>
+
+        }]
+    });
+});
+</script>

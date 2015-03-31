@@ -1,0 +1,35 @@
+<div class = "row">
+  <div class = "col-lg-6 col-md-6">
+    <h4><span class="glyphicon glyphicon-tower"></span> Challenge: <%= @response[:challenge].title %></h4>
+  </div>
+  <div class = "col-lg-3 col-md-6">
+    <h4><span class="glyphicon glyphicon-flag"></span> Questions: <%= @response[:challenge].questions.count  %> </h4>
+  </div>
+  <div class = "col-lg-3 col-md-6">
+    <h4><span class="glyphicon glyphicon-user"></span> Users: <%= @response[:challenge].member_engagement %> </h4>
+  </div>
+</div>
+<div class = "row">
+  <div class = "col-lg-6 col-md-6">
+    <h4>Users Scores</h4>
+    <table class='table'>
+    <tr><th>User</th><th>Score</th></tr>
+    <% @response[:challenge].user_scores.each do |sc| %>
+        <tr><td><%= User.find(sc[0]).full_name %></td><td><%= sc[1] %></td></tr>
+    <% end %>
+
+    </table>
+</div>
+<div class = "col-lg-6 col-md-6">
+    <h4>Test Cases</h4>
+    <table class='table'>
+    <% @response[:challenge].questions.each do |q| %>
+        <tr><td><b><%= q.title.truncate(25) %></b></td><td></td></tr>
+        <% q.question_test_cases.each_with_index do |tc, i| %>
+            <tr><td>Test case <%= i + 1 %></td><td><%= pluralize(tc.submissions.count, 'submission') %></td></tr>
+        <% end %>
+    <% end %>
+
+    </table>
+</div>
+</div>
