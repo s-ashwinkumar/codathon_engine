@@ -10,7 +10,7 @@ gem 'mysql2'
 
 #For CAS Authentication
 gem 'rubycas-client'
-
+gem 'qtip2-jquery-rails', '~> 2.1.107'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,9 +27,18 @@ end
 
 gem 'jquery-rails'
 
+#For file uploads
+gem 'paperclip'
+
+#For ajax file uploads
+gem 'remotipart', '~> 1.2'
+
 # Twitter BootStrap gem - Documentation/Dev - https://github.com/metaskills/less-rails-bootstrap
 gem 'less-rails-bootstrap'
-
+gem 'will_paginate-bootstrap'
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0.2'
+gem 'chartjs-ror'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -43,4 +52,4 @@ gem 'less-rails-bootstrap'
 # gem 'capistrano'
 
 # To use debugger
-#gem 'debugger'
+gem 'debugger'

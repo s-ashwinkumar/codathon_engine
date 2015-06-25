@@ -1,0 +1,53 @@
+<div class = "row">
+  <div class = "col-lg-6 col-md-6">
+    <h4><span class="glyphicon glyphicon-tower"></span> Overall Average Score: <%= @response[:average_overall_score] %></h4>
+  </div>
+  <div class = "col-lg-3 col-md-6">
+    <h4><span class="glyphicon glyphicon-flag"></span> Top Score: <%= @response[:top_scores].max %> </h4>
+  </div>
+</div>
+<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+$(function () {
+    $('#container2').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Recent Scores'
+        },
+        xAxis: {
+            categories: <%= raw @response[:challenge_names].to_json %>
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Points'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Highest Score',
+            data: <%= raw @response[:top_scores].to_json %>
+
+        }, {
+            name: 'Average Score',
+            data: <%= raw @response[:avg_scores].to_json %>
+
+        }]
+    });
+});
+</script>

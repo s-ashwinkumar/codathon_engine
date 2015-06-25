@@ -1,0 +1,43 @@
+<div class="table-responsive">
+	<table class="table table-hover" id="challenges_list">
+		<tr>
+			<th width="3%">#</th>
+			<th width="7%">Submissions</th>
+			<th>Title</th>
+			<th width="7%" /> <!-- For the schedule button -->
+			<th width="7%"/> <!-- For the Finish Button -->
+		</tr>
+		<% @challenges.each do |ch| %>
+		<tr>
+			<td id=<%= "id_#{ch.id}" %>><%= ch.id %></td>
+
+			<td id=<%= "submissions_#{ch.id}" %> style="text-align:center;"><span class="badge"><%= get_submission_count ch.id %></span></td>
+
+			<td id=<%= "title_#{ch.id}" %> title="<%= "#{ch.start_and_end_time_html}" %>"><a href = <%= "/load_modal?challenge_id=#{ch.id}" %> data-toggle="modal" data-target="#myModal"><%= ch.title %></a></td>
+
+			<td><button type="button" class="btn btn-success btn-sm btn-circle schedule-button" <%= disable?("#{ch.id}") %> id="<%= ch.id %>">Schedule</button></td>
+
+			<td><button type="button" class="btn btn-danger btn-sm btn-circle" <%= disable?("#{ch.id}") %> id=<%= "finish_#{ch.id}" %>>Finish</button></td>
+		</tr>
+		<% end %>
+	</table>
+
+	<%= will_paginate @challenges, renderer: BootstrapPagination::Rails %>
+	<button type="button" class="btn btn-primary " id="add_challenge" data-toggle="modal" data-target="#addModal">Add Challenge</button>
+	<!-- THIS IS A MODAL FOR QUESTIONS -->
+	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+  		<div class="modal-dialog modal-lg">	
+  			<div class="modal-content">
+  			</div>
+  		</div>
+	</div>
+
+	<!-- THIS IS A MODAL FOR ADDING NEW CHALLENGE -->
+	<div class="modal fade" id="addModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<%= render :partial => "add_new_challenge" %>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>	

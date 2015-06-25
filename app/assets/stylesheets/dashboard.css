@@ -1,0 +1,16 @@
+.dash_container {
+	height: 500px;
+}
+
+.inner_title {
+	height: 30px !important;
+	overflow: hidden;
+}
+.glyphicon_button{
+	color: white;
+}
+.glyphicon_button:hover {
+  color: #E0E0E0 ;
+  cursor: pointer;
+  cursor: hand;
+}

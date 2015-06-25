@@ -1,8 +1,0 @@
-<h1>Login#index</h1>
-<p>Find me in app/views/login/index.html.erb</p>
-
-<h1> <%= session[:cas_user] %> </h1>
-
-<%= link_to("Login", CASClient::Frameworks::Rails::Filter.login_url(controller)) %>
-
-<%= link_to("Logout", '/logout') %>

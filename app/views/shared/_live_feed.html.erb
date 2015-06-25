@@ -1,0 +1,15 @@
+<u>Submissions Live Feed</u>
+<div id="live_feed_list">
+	<div class="outside">
+		<div class="inside">
+			<ul class="list-unstyled">
+				<% @submissions.each do |sub| %>
+				<li class="live_feed_element">
+					<span class="glyphicon glyphicon-floppy-saved"></span>
+					<%= "#{sub.user.full_name}" %> 
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>

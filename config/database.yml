@@ -7,7 +7,7 @@
 default: &default
   adapter: mysql2
   username: root
-  password: hameed!@#
+  password:
   host: localhost
   encoding: utf8
   timezone: '+05:30'
