@@ -1,7 +1,7 @@
 class SubmissionsController < ApplicationController
-  
+
   #CAS Authentication Docs : https://github.com/rubycas/rubycas-client#using-rubycas-client-in-rails-controllers
-  
+
   before_filter :check_loggedin
 
   def check_loggedin
@@ -34,7 +34,7 @@ class SubmissionsController < ApplicationController
     ensure
 
     end
-    
+
     # question_id = params["question_id"]
     # solution = params["solution"]
     # question = Question.find_by_id(question_id)

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
   before_filter CASClient::Frameworks::Rails::Filter, :except => [ :home_page ]
 
   #CAS Logout : https://github.com/rubycas/rubycas-client#defining-a-logout-action
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       session[:user] = User.check_for_user(session)
 		  redirect_to '/dashboards' #redirect to home page after navbar is done
     end
-  end	
+  end
 
  def home_page
     if session[:cas_user]
