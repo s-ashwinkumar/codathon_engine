@@ -9,15 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= font-awesome.min.css
+ *= stylish-portfolio.css
  *= require_tree .
  */
 
 .qtip-alert{
   min-width: 200px !important;
-}
-
-body {
-    padding-top: 90px;
 }
 
 body#homePageDesign{
@@ -29,6 +27,24 @@ body#homePageDesign{
 	background-size: cover;
 }
 
+.form-control:focus {
+  border-color: #b95d40!important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6)!important;
+}
+body{
+  background-color: #e2dcd8!important;
+  color: #5f5e66!important;
+}
+
+.login-button{
+  height: 60px;
+  width: 120px;
+}
+
+.orange-button{
+  background-color: #b95d40!important;
+  border-color: #a65339!important;
+}
 /*layout */
 
 .drop-extra{
@@ -43,31 +59,12 @@ body#homePageDesign{
 
 /* Footer CSS */
 
-.footer{
-    text-align: center;
-    vertical-align: middle;
-    opacity: 0.8;
-}
-
-.navbar{
-	opacity: 0.85;
-}
-
-.footer-links > li{
-	display: inline;
-}
-
 .image-container{
 	position: relative;
 	overflow: hidden;
 	margin-top: 3%;
 	display: block;
 	width: 100% !important;
-}
-
-.btn-lg{
-	height: 60px;
-	width: 120px;
 }
 
 /* Heading in login home page */
@@ -138,19 +135,17 @@ body#homePageDesign{
 	display:table
 }
 
-.customSelect{
-     color: #555555;
-    font-size: 19px;
-    margin-bottom: 14px;
-    margin-right: 30px;
-    padding: 0 10px;
-    width: 135px;
+.title-well{
+  margin-top:0.5vh;
+  padding:1px!important;
+  text-align: center;
+  font-size: xx-large;
+  color: #b95d40;
 }
 
-.glyphicon-ok {
-	color: green;
+.body-well{
+  min-height: 80vh!important;
+  margin-top:1vh;
 }
 
-.glyphicon-remove {
-	color: red;
-}
+/* */

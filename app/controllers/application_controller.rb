@@ -10,16 +10,20 @@ class ApplicationController < ActionController::Base
     CASClient::Frameworks::Rails::Filter.logout(self, root_url)
   end
 
+  def get_home_path
+    "#{current_user.class.to_s.downcase}_home_path"
+  end
+
   def login
   	if session[:cas_user]
       session[:user] = User.check_for_user(session)
-		  redirect_to '/dashboards' #redirect to home page after navbar is done
+		  redirect_to send(get_home_path) #redirect to home page after navbar is done
     end
   end
 
  def home_page
     if session[:cas_user]
-      redirect_to '/dashboards'
+      redirect_to send(get_home_path)
     end
  end
 

@@ -1,26 +1,13 @@
 Codathon::Application.routes.draw do
-  
-  get 'login', to: 'application#login'
 
-  match '/logout', to: 'application#logout'
-  match '/dashboards', to: 'dashboards#index', :as => "dashboards"
-  match '/average_score_charts', to: 'dashboards#average_score_charts', :as => "average_score_charts"
-  match '/engagement_charts', to: 'dashboards#engagement_charts', :as => "engagement_charts"
-  match '/individual_score_chart', to: 'dashboards#individual_score_chart', :as => "individual_score_chart"
-  match '/challenges', to: 'challenges#index', :as => "challenges"
-  match '/practices', to: 'practices#index', :as => "practices"
-  match '/challenge/finish', to: 'challenges#finish', :as => "challenge_finish"
-  match '/challenge/schedule', to: 'challenges#schedule', :as => "challenge_schedule"
-  match '/load_modal', to: 'challenges#load_modal', :as => "load_modal"
-  match '/save_challenge', to: 'challenges#save_challenge', :as => "save_challenge"
-  match '/load_datepicker', to: 'challenges#load_datepicker', :as => "challenges_load_datepicker"
-  match '/index', to: 'challenges#user_index', :as => "user_index"
-  match '/challenge/create', to: 'challenges#create', :as =>"create_challenge"
+  get 'login', to: 'application#login', :as => "login"
 
-  match '/delete_test_case', to: 'questions#delete_test_case', :as => 'delete_test_case', :via => ['post']
-
-
-  match '/validate_submission', to: 'submissions#validate_submission', :as => 'validate_submission', :via => ['post']
+  match '/logout', to: 'application#logout', :as => "logout"
+  match '/admin_home', to: 'admins#home', :as => "admin_home"
+  match '/participant_home', to: 'participants#home', :as => "participant_home"
+  match '/create_challenge', to: 'admins#create_challenge', :as => "create_challenge"
+  match '/challenge/:id', to: 'challenges#index', :as => "challenge"
+  match '/update_challenge', to: 'challenges#update', :as => "update_challenge"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

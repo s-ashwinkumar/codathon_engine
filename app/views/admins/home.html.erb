@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="well title-well">
+    Challenge Page
+  </div>
+  <% if flash[:success] %>
+  <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
+  <%end%>
+  <br>
+  <div style="padding-top:2vh;">
+    <div class="table-responsive">
+      <table class="table table-hover table-header" id="challenges_list">
+        <tr style="text-align:center;">
+          <th class="col-md-1 text-center">#</th>
+          <th class="col-md-2 text-center">Subscriptions</th>
+          <th class="col-md-8 text-center">Title</th>
+        </tr>
+        <% @challenges.each do |ch| %>
+          <tr>
+            <td class="col-md-1 text-center"><%= ch.id %></td>
+
+            <td class="col-md-2 text-center"><span class="badge"><%= 2 %></span></td>
+
+            <td class="col-md-8 r"><a href ="/challenge/<%= ch.id %>"><%= ch.title %></a></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <%= will_paginate @challenges, renderer: BootstrapPagination::Rails %>
+  <button type="button" class="btn btn-primary orange-button" id="add_challenge" data-toggle="modal" data-target="#addModal">Add Challenge</button>
+
+  <!-- THIS IS A MODAL FOR ADDING NEW CHALLENGE -->
+  <div class="modal fade bs-example-modal-lg" id="addModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <%= render :partial => "new_challenge" %>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+  </div>
+
+</div>
