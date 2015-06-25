@@ -10,22 +10,19 @@
  *
  *= require_self
  *= require_tree .
- *= require custom_bootstrap/custom_bootstrap
- *= require bootstrap-datetimepicker
- *= require qtip2-jquery-rails
  */
 
 .qtip-alert{
   min-width: 200px !important;
 }
- 
+
 body {
     padding-top: 90px;
 }
 
 body#homePageDesign{
 	padding-top: 10px;
-	background: url(/assets/hackathon.jpg) no-repeat center center fixed; 
+	background: url(/assets/hackathon.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -61,7 +58,7 @@ body#homePageDesign{
 }
 
 .image-container{
-	position: relative; 
+	position: relative;
 	overflow: hidden;
 	margin-top: 3%;
 	display: block;
@@ -89,7 +86,7 @@ body#homePageDesign{
 }
 
 .homeHeading{
-	margin-bottom: 0px; 
+	margin-bottom: 0px;
 	font-size: 40pt;
 }
 .homeSubheading{
@@ -112,32 +109,32 @@ body#homePageDesign{
 /* Screenshot Image CSS */
 
 .centreImage{
-	position:absolute; 
-	z-index:4; 
+	position:absolute;
+	z-index:4;
 	left: 25%;
 	height:100%;
 	width: 47%;
 }
 
 .leftImage{
-	position:relative; 
-	float:left; 
-	margin-top: 5%;  
+	position:relative;
+	float:left;
+	margin-top: 5%;
 	z-index:1;
 	height: 40%;
 	width: 55%;
 }
 
 .rightImage{
-	z-index:1; 
-	right: 10%; 
+	z-index:1;
+	right: 10%;
 	margin-top: 5%;
-	height:1%; 
+	height:1%;
 	width:45%;
 }
 
 .loginButton{
-	margin: 3% auto; 
+	margin: 3% auto;
 	display:table
 }
 

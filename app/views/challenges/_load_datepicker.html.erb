@@ -1,7 +1,0 @@
-<div class="datepicker_elems">
-	START TIME: <input id="start_time<%= challenge.id %>" type="text" class="input_datetimepicker" value="<%= start_date %>"></input>
-
-	END TIME: <input id="end_time<%= challenge.id %>" type="text" class="input_datetimepicker" value="<%= end_date %>"></input>
-	<%= hidden_field_tag "challenge_id", challenge.id %>
-	<button type="button" class="btn btn-default btn-mini btn-circle" id="schedule_challenge_button" challengeId="<%= challenge.id%>">Save</button>
-</div>
