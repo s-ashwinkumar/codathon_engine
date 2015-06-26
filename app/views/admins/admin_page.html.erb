@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="well title-well">
+    Admin Page
+  </div>
+  <% if flash[:success] %>
+  <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
+  <%end%>
+  <br>
+  <div style="padding-top:2vh;">
+    <div class="table-responsive">
+      <table class="table table-hover table-header" id="challenges_list">
+        <tr style="text-align:center;">
+          <th class="col-md-1 text-center">Id</th>
+          <th class="col-md-5 text-center">Full Name</th>
+          <th class="col-md-4 text-center">Email ID</th>
+          <th class="col-md-2 text-center">Action</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="col-md-1 text-center"><%= user.id %></td>
+            <td class="col-md-5 text-center"><%= user.full_name %></td>
+            <td class="col-md-4 text-center"><%= user.email %></td>
+            <td class="col-md-2 text-center">
+              <button type="button" onclick="convertUserToAdmin(<%= user.id %>)" class="btn btn-primary orange-button" id="make_admin">Convert To Admin</button>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+    <button type="button" class="btn btn-primary orange-button" onclick="location.href='/admin_home'">Home Page</button>
+ </div>
+
+</div>

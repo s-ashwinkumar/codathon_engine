@@ -7,7 +7,7 @@ gem 'rails', '3.2.16'
 
 #gem 'sqlite3'
 gem 'mysql2'
-
+gem 'qtip2-jquery-rails', '~> 2.1.107'
 #For CAS Authentication
 gem 'rubycas-client'
 gem 'will_paginate-bootstrap'

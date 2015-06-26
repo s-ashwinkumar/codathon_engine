@@ -10,6 +10,7 @@
  *
  *= require_self
  *= font-awesome.min.css
+ *= require qtip2-jquery-rails
  *= stylish-portfolio.css
  *= require_tree .
  */

@@ -9,4 +9,8 @@ class AdminsController < ApplicationController
     flash[:success] = "Challenge created successfully"
     redirect_to send(get_home_path)
   end
+
+  def admin_page
+    @users = Participant.order("full_name DESC").paginate(:page => params[:page], :per_page => 10)
+  end
 end

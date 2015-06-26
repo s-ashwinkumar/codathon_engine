@@ -32,6 +32,11 @@
       <li>
         <%= link_to("Home", send(get_home_path))%>
       </li>
+      <% if current_user.is_a?(Admin) %>
+        <li>
+          <%= link_to("Admin Page", admin_page_path)%>
+        </li>
+      <% end %>
       <li>
         <a href="#about" onclick = $("#menu-close").click(); >About</a>
       </li>

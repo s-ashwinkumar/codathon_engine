@@ -18,7 +18,7 @@
           <tr>
             <td class="col-md-1 text-center"><%= ch.id %></td>
 
-            <td class="col-md-2 text-center"><span class="badge"><%= 2 %></span></td>
+            <td class="col-md-2 text-center"><span class="badge"><%= ch.subscriptions.count %></span></td>
 
             <td class="col-md-8 r"><a href ="/challenge/<%= ch.id %>"><%= ch.title %></a></td>
           </tr>
