@@ -2,7 +2,7 @@
 $(document).ready(function(){
   $("#new_challenge").validate({
     rules: {
-    "challenge[title]": {required: true},
+    "challenge[title]": {required: true,maxlength: 90},
     "challenge[description]": {required: true},
     }
   });

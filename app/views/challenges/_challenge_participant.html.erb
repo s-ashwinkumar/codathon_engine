@@ -1,0 +1,22 @@
+<div class="well title-well">
+  Challenge <%= @challenge.id %> , Author : <%= @challenge.owner.full_name %>
+</div>
+<div class="carousel-inner">
+  <div class="form-group">
+    <label class="control-label">Title</label>
+    <%= text_field_tag :title, @challenge.title, :readonly => true, class: "form-control input-sm" %>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Description</label>
+    <%= text_area_tag :description, @challenge.description, :rows => 10, :readonly => true, class: "form-control input-sm" %>
+  </div>
+</div>
+<%= form_tag subscription_path, {:class => 'form-inline', :role => 'form'} do %>
+  <%= hidden_field_tag :challenge_id,@challenge.id %>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" onclick="location.href='/participant_home'">Home Page</button>
+    <% button_name = current_user.subscribed_to?(@challenge.id) ? "Unscubscribe !!" : "Subscribe !!" %>
+    <%= submit_tag button_name,id: "subscribe", class: "btn btn-primary orange-button" %>
+  </div>
+<% end %>
+

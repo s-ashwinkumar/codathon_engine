@@ -10,7 +10,7 @@
     <label class="control-label">
       Participants :
     </label>
-    <% if @challenge.created_by?(current_user) %>
+    <% if @challenge.created_by?(current_user) && @challenge.subscriptions.present? %>
         <button type="button" class="btn btn-primary btn-sm orange-button" id="select_winner" data-toggle="modal" data-target="#winnerModal">Select Winner</button>
     <% end %>
   </div>

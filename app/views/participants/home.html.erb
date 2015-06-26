@@ -25,7 +25,7 @@
 
             </td>
 
-            <td class="col-md-8 text-center" id="title<%= ch.id %>"><a href ="#" onclick="showChallenge(<%= ch.id %>)"><%= ch.title %></a>
+            <td class="col-md-8 text-center" id="title<%= ch.id %>"><a href ="/challenge/<%= ch.id %>" ><%= ch.title %></a>
             </td>
             <%= hidden_field_tag "desc#{ch.id}",ch.description %>
             <%= hidden_field_tag "subscription#{ch.id}",@subscription %>
