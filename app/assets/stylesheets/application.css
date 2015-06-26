@@ -131,6 +131,12 @@ body{
 	width:45%;
 }
 
+.logo{
+  position: absolute;
+  bottom: 0;
+  padding-left: 3vh;
+}
+
 .loginButton{
 	margin: 3% auto;
 	display:table

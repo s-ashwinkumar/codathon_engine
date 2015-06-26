@@ -11,6 +11,7 @@ Codathon::Application.routes.draw do
   match '/update_challenge', to: 'challenges#update', :as => "update_challenge"
   match '/select_winner', to: 'challenges#select_winner', :as => "select_winner"
   match '/convert_user', to: 'users#convert_to_admin', :as => "convert_user"
+  match '/subscribe', to: 'participants#subscribe', :as => "subscription"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

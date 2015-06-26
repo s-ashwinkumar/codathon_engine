@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title" name="myModalLabel">Challenge Details</h4>
+</div>
+<div class="modal-body">
+  <div class="carousel-inner">
+    <div class="form-group">
+      <label class="control-label">Title</label>
+      <%= text_field_tag :chtitle, nil, :readonly => true, class: "form-control input-sm" %>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Description</label>
+        <%= text_area_tag :chdescription, nil, :rows => 10, :readonly => true, class: "form-control input-sm" %>
+    </div>
+  </div>
+  <%= form_tag subscription_path, {:class => 'form-inline', :role => 'form'} do %>
+    <%= hidden_field_tag :challenge_id,nil %>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <%= submit_tag "Subscribe !!",id: "subscribe", class: "btn btn-primary orange-button" %>
+    </div>
+  <% end %>
+</div>

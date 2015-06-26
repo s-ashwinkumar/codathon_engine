@@ -1,0 +1,4 @@
+module ParticipantsHelper
+
+
+end
