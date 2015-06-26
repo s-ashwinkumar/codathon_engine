@@ -8,6 +8,7 @@ Codathon::Application.routes.draw do
   match '/create_challenge', to: 'admins#create_challenge', :as => "create_challenge"
   match '/challenge/:id', to: 'challenges#index', :as => "challenge"
   match '/update_challenge', to: 'challenges#update', :as => "update_challenge"
+  match '/select_winner', to: 'challenges#select_winner', :as => "select_winner"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

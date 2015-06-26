@@ -1,0 +1,46 @@
+<% if @challenge.finished? %>
+  <label class="control-label">
+    Winner
+  </label>
+  <div class="well">
+    <%= @challenge.winner.full_name %>
+  </div>
+<% else %>
+  <div style="padding-bottom:2vh;">
+    <label class="control-label">
+      Participants :
+    </label>
+    <% if @challenge.created_by?(current_user) %>
+        <button type="button" class="btn btn-primary btn-sm orange-button" id="select_winner" data-toggle="modal" data-target="#winnerModal">Select Winner</button>
+    <% end %>
+  </div>
+  <div class="well">
+    <%= @challenge.subscriber_names.to_sentence %>
+  </div>
+<% end %>
+
+<!-- Modal for winner selection -->
+<div class="modal fade bs-example-modal-lg" id="winnerModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" name="myModalLabel">Select A winner !</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_tag select_winner_path, {:class => 'form-inline', :role => 'form'} do %>
+            <div class="form-group" style="padding-bottom: 4vh;">
+              <label class="control-label" style="padding-right: 2vw;">Participants : </label>
+              <%= select_tag(:winner_id, options_from_collection_for_select(@challenge.participants, :id, :full_name),{class: "form-control"}) %>
+              <%= hidden_field_tag :id, @challenge.id %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= submit_tag "Create", class: "btn btn-primary orange-button" %>
+            </div>
+          <% end %>
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

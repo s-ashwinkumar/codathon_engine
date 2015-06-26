@@ -14,4 +14,11 @@ class ChallengesController < ApplicationController
     flash[:success] = "Challenge updated successfully !"
     redirect_to challenge_path(@challenge.id)
   end
+
+  def select_winner
+    @challenge.update_attributes({"winner_id" => params[:winner_id], "finished_at" => Time.now})
+    flash[:success] = "Winner assigned successfully !"
+    redirect_to challenge_path(@challenge.id)
+  end
+
 end
